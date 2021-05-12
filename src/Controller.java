@@ -29,7 +29,7 @@ public class Controller {
     public Pane mantBtn;
     public Pane venBtn;
     public Pane exitBtn;
-    public Label lbl1;
+    public Label logErrorLbl;
 
     //Fields de login
     public PasswordField passFld;
@@ -72,9 +72,7 @@ public class Controller {
 
 
     public void enviaLogin(MouseEvent actionEvent) throws IOException {
-        //Saca el texto que está en el textfild cuando se presiona el botón
-        System.out.println(userTxtF.getText());
-        System.out.println(passFld.getText());
+        logErrorLbl.setVisible(false);
         String connectionUrl =
                 "jdbc:sqlserver://localhost:1433;"
                         + "database=CriptoNet;"
@@ -87,6 +85,7 @@ public class Controller {
             changeSceneH();
         }
         catch (SQLException ex){
+            logErrorLbl.setVisible(true);
             ex.printStackTrace();
         }
 
