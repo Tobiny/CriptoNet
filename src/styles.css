@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'Poppins Regular';
+    src: url('src/fonts/poppins/Poppins-Regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'Poppins Regular';
+    src: url('src/fonts/poppins/Poppins-Bold.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'Poppins Medium';
+    src: url('src/fonts/poppins/Poppins-Medium.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url('src/fonts/montserrat/Montserrat-Bold.ttf') format("truetype");
+}
+
+.fonts {
+    -fx-font-family: 'Poppins Regular';
+}
+.bg1{
+    -fx-background-color: linear-gradient(#c850c0, #4158d0);
+    -fx-font-family: 'Poppins Regular';
+    /*background: linear-gradient(*/
+    /*        */
+    /*        , #c850c0, #4158d0);*/
+    -fx-alignment: center;
+}
+
+.login_txt1 {
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 22;
+    /*-fx-font-weight: 500;*/
+}
+
+.login_pn {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 1, 0, 0, 0);
+}
+
+.login_pn_left {
+    -fx-background-color: lightgray;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 1, 0, 0, 0);
+}
+
+.lg_input {
+    -fx-background-position: right center;
+    -fx-background-color: #e6e6e6;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+}
+.lg_input:pressed {
+    -fx-effect: dropshadow(three-pass-box, rgba(87,184,70, 0.8), 20, 0, 0, 0);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+.lg_input:hover {
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.lg_btn {
+    -fx-background-color: #57b846;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-font-family: "Montserrat Bold";
+    -fx-cursor: hand;
+}
+
+.lg_btn:hover {
+    -fx-background-color: black;
+}
+.lg_btn:pressed {
+    -fx-scale-y: 0.97;
+    -fx-scale-x: 0.97;
+}
+
+.logo_lbl:pressed, .logo_lbl_white:pressed {
+    -fx-translate-x: -25;
+    -fx-font-size: 43;
+}
+
+
+.logo_lbl {
+    -fx-font-family: "Montserrat Bold";
+    -fx-background-color: black;
+    -fx-background-radius: 25;
+    -fx-text-fill: white;
+    -fx-border-radius: 25;
+    -fx-cursor: hand;
+    -fx-font-size: 43;
+}
+.logo_lbl_white {
+    -fx-font-family: "Montserrat Bold";
+    -fx-background-color: white;
+    -fx-background-radius: 25;
+    -fx-text-fill: black;
+    -fx-border-radius: 25;
+    -fx-cursor: hand;
+    -fx-font-size: 43;
+}
+.logo_lblHide {
+    -fx-font-family: "Montserrat Bold";
+}
+.logo_lblHide_white {
+    -fx-text-fill: white;
+    -fx-font-family: "Montserrat Bold";
+}
+
+.rounded_pn_border {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+.left_menu {
+    -fx-background-color: #6f42c1;
+}
+.rounded_pn {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 1, 0, 0, 0);
+}
+
+.home_tab_pane {
+    /* -fx-tab-min-width: 4.583em;  55 */
+    /* -fx-tab-max-width: 4.583em; 55 */
+    -fx-tab-min-height: 2em; /* 24 */
+    -fx-tab-max-height: 2em; /* 24 */
+}
+
+.left_btn_h, .left_btn_h > Label  {
+    -fx-font-family: "Poppins Regular";
+    -fx-font-size: 14;
+    -fx-text-fill: #D2D2D2;
+    -fx-font-weight: 400px;
+    -fx-cursor: hand;
+}
+
+
+.left_btn_h:hover > Label {
+    -fx-text-fill: white;
+    -fx-stroke-width: 0.9;
+}
+
+.left_btn_h:pressed {
+    -fx-scale-y: 0.97;
+    -fx-scale-x: 0.97;
+}
+
+
+.left_btn_h_line {
+    -fx-stroke-width: 0.5;
+    -fx-stroke: white;
+
+}
+.left_btn_pro > Line, .left_btn_pro > Label {
+    -fx-stroke-width: 1.2;
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins Medium";
+}
