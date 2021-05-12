@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<FlowPane alignment="center" hgap="10" prefHeight="511.0" prefWidth="812.0" styleClass="bg1" stylesheets="@styles.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<FlowPane alignment="center" hgap="10" prefHeight="511.0" prefWidth="812.0" styleClass="bg1" stylesheets="@styles.css" vgap="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller">
     <Pane prefHeight="458.0" prefWidth="651.0" styleClass="rounded_pn">
         <Pane prefHeight="458.0" prefWidth="325.0" styleClass="login_pn_left">
             <ImageView fitHeight="242.0" fitWidth="251.0" layoutX="37.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">

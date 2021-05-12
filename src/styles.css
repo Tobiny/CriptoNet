@@ -55,7 +55,7 @@
     -fx-background-color: #e6e6e6;
     -fx-background-radius: 25px;
     -fx-border-radius: 25px;
-    -fx-font-size: 14;
+    -fx-font-size: 13;
 }
 .lg_input:pressed {
     -fx-effect: dropshadow(three-pass-box, rgba(87,184,70, 0.8), 20, 0, 0, 0);
@@ -146,7 +146,6 @@
     -fx-font-family: "Poppins Regular";
     -fx-font-size: 14;
     -fx-text-fill: #D2D2D2;
-    -fx-font-weight: 400px;
     -fx-cursor: hand;
 }
 
@@ -167,7 +166,7 @@
     -fx-stroke: white;
 
 }
-.left_btn_pro > Line, .left_btn_pro > Label {
+.left_btn_focused > Line, .left_btn_focused > Label {
     -fx-stroke-width: 1.2;
     -fx-text-fill: white;
     -fx-font-family: "Poppins Medium";
