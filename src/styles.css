@@ -167,3 +167,6 @@
     -fx-text-fill: white;
     -fx-font-family: "Poppins Medium";
 }
+.center_menu Label{
+    -fx-font-size: 18;
+}
