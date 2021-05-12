@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -24,14 +25,19 @@ public class Controller {
     public Pane cliBtn;
     public Pane mantBtn;
     public Pane venBtn;
+    public Pane exitBtn;
     public Label lbl1;
-    public TextField txtFld1;
+
+    //Fields de login
+    public PasswordField passFld;
+    public TextField userTxtF;
+
     public Label logoLblH;
     public Label logoLbl;
 
     public Controller() {
     }
-    public void changeSceneH(MouseEvent actionEvent) throws IOException {
+    public void changeSceneH() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Home.fxml")));
         Stage window = (Stage) loginBtn.getScene().getWindow();
         window.setScene(new Scene(root, 1280.0D, 720.0D));
@@ -57,17 +63,25 @@ public class Controller {
         window.setScene(new Scene(root, 1280.0D, 720.0D));
     }
 
+    public void exit(MouseEvent actionEvent) throws IOException {
+        System.exit(0);
+    }
 
+
+    public void enviaLogin(MouseEvent actionEvent) throws IOException {
+        //Saca el texto que está en el textfild cuando se presiona el botón
+        System.out.println(userTxtF.getText());
+        System.out.println(passFld.getText());
+        if(userTxtF.getText().equals("puta") && passFld.getText().equals("memogay")){
+            changeSceneH();
+        }
+    }
 
     public void showLogo(MouseEvent actionEvent) {
         this.logoLblH.setVisible(true);
     }
-
     public void hideLogo(MouseEvent actionEvent) {
         this.logoLblH.setVisible(false);
     }
 
-    public void submit1(MouseEvent actionEvent) {
-        this.lbl1.setText(this.txtFld1.getText());
-    }
 }

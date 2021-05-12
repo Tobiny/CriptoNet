@@ -75,7 +75,7 @@
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@src/icons/exit.png" />
                 </ImageView>
-                <Label layoutX="49.0" layoutY="10.0" prefHeight="35.0" prefWidth="151.0" text="Salir" />
+                <Label layoutX="49.0" layoutY="10.0" onMouseClicked="#exit" prefHeight="35.0" prefWidth="151.0" text="Salir" />
                 <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
             </Pane>
         </GridPane>
