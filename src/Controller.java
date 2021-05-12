@@ -4,7 +4,6 @@
 //
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,10 +13,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 
 public class Controller {
     public Button loginBtn;
@@ -72,9 +75,21 @@ public class Controller {
         //Saca el texto que está en el textfild cuando se presiona el botón
         System.out.println(userTxtF.getText());
         System.out.println(passFld.getText());
-        if(userTxtF.getText().equals("puta") && passFld.getText().equals("memogay")){
+        String connectionUrl =
+                "jdbc:sqlserver://localhost:1433;"
+                        + "database=CriptoNet;"
+                        + "user="+userTxtF.getText()+";"
+                        + "password="+passFld.getText()+";"
+                        + "trustServerCertificate=false;"
+                        + "loginTimeout=30;";
+        try {
+            Connection connection = DriverManager.getConnection(connectionUrl);
             changeSceneH();
         }
+        catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
     }
 
     public void showLogo(MouseEvent actionEvent) {
