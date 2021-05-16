@@ -50,40 +50,6 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 1, 0, 0, 0);
 }
 
-.lg_input {
-    -fx-background-position: right center;
-    -fx-background-color: #e6e6e6;
-    -fx-background-radius: 25px;
-    -fx-border-radius: 25px;
-    -fx-font-size: 13;
-}
-.lg_input:pressed {
-    -fx-effect: dropshadow(three-pass-box, rgba(87,184,70, 0.8), 20, 0, 0, 0);
-    -fx-scale-y: 1.05;
-    -fx-scale-x: 1.05;
-}
-.lg_input:hover {
-    -fx-scale-y: 1.05;
-    -fx-scale-x: 1.05;
-}
-
-.lg_btn {
-    -fx-background-color: #57b846;
-    -fx-background-radius: 25;
-    -fx-border-radius: 25;
-    -fx-text-fill: white;
-    -fx-font-size: 15;
-    -fx-font-family: "Montserrat Bold";
-    -fx-cursor: hand;
-}
-
-.lg_btn:hover {
-    -fx-background-color: black;
-}
-.lg_btn:pressed {
-    -fx-scale-y: 0.97;
-    -fx-scale-x: 0.97;
-}
 .lg_error {
     -fx-text-fill: darkred;
     -fx-font-size: 11;
@@ -134,6 +100,74 @@
     -fx-border-radius: 20;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 1, 0, 0, 0);
 }
+.pane_w_form {
+    -fx-font-family: "Montserrat Bold";
+    -fx-font-size: 14;
+}
+
+.pane_w_form > .text-field{
+    -fx-background-position: right center;
+    -fx-background-color: #dddddd;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-font-size: 14;
+    -fx-text-fill: dimgray;
+    -fx-prompt-text-fill: gray;
+}
+
+/*.pane_w_form > .text-field{
+    -fx-text-fill: firebrick;
+}*/
+
+
+.pane_w_form > .text-field:pressed {
+    -fx-effect: dropshadow(three-pass-box, rgba(87,184,70, 0.8), 20, 0, 0, 0);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+    -fx-text-fill: black;
+}
+.pane_w_form > .text-field:hover {
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.pane_w_form > .button {
+    -fx-background-color: #57b846;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-font-family: "Montserrat Bold";
+    -fx-cursor: hand;
+}
+.pane_w_form > .button:hover {
+    -fx-background-color: black;
+}
+.pane_w_form > .button:pressed {
+    -fx-scale-y: 0.97;
+    -fx-scale-x: 0.97;
+}
+.pane_w_form > .combo-box {
+    -fx-background-position: right center;
+    -fx-background-color: #dddddd;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-font-size: 14;
+    -fx-prompt-text-fill: gray;
+}
+.pane_w_form > .combo-box .text-field {
+    -fx-prompt-text-fill: gray;
+}
+
+.pane_w_form > .combo-box .list-cell, .pane_w_form > .combo-box .list-cell .text-field {
+    -fx-text-fill: gray;
+    -fx-background-color: #d2d2d2;
+    -fx-background-radius: 25px;
+}
+.pane_w_form > .combo-box .list-view {
+    -fx-background-color: #d2d2d2;
+
+}
 
 .home_tab_pane {
     /* -fx-tab-min-width: 4.583em;  55 */
@@ -173,4 +207,76 @@
 }
 .center_menu Label{
     -fx-font-size: 18;
+}
+
+/* Tab panels */
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+
+}
+.tab-pane > .tab-header-area > .headers-region > .tab:top {
+    -fx-border-color: #9b59b6;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-pref-height: 40px;
+    -fx-pref-width: 25em;
+    -fx-background-insets: 0;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected:top {
+    -fx-border-color: #9b59b6;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-radius: 0;
+    -fx-background-color: #9b59b6;
+    -fx-pref-height: 50px;
+    -fx-background-insets: 0;
+    -fx-wrap-text: true;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected {
+    -fx-border-color: transparent;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected > .tab-container > .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-size:  14px;
+    -fx-font-family: "Poppins Medium";
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: black;
+    -fx-font-size:  14px;
+    -fx-font-family: "Poppins Medium";
+}
+
+.tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-insets: 0;
+    -fx-pref-height: 45px;
+}
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-width: 1, 1;
+    -fx-border-color: -fx-focus-color, -fx-faint-focus-color;
+    -fx-border-insets: 0 0 0 0, 0 0 0 0;
+    -fx-border-radius: 0; /* looks sharper if outer border has a tighter radius (2 instead of 3) */
+}
+.tab {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0.083333em 0.5em 0.083333em 0.5em; /* 1 6 1 6 */
+}
+
+.tab-pane {
+    -fx-control-inner-background: transparent;
+}
+
+.tab_pane_content {
+    -fx-alignment: center;
+    -fx-start-margin: 10px;
 }

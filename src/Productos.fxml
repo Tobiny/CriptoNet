@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -80,4 +82,122 @@
             </Pane>
         </GridPane>
     </Pane>
+    <TabPane layoutX="235.0" layoutY="-6.0" prefHeight="728.0" prefWidth="1048.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Agregar productos">
+            <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="700.0">
+                <children>
+                    <Label minHeight="-Infinity" prefHeight="34.0" prefWidth="297.0" text="Id del Producto">
+                  <GridPane.margin>
+                     <Insets />
+                  </GridPane.margin></Label>
+                    <TextField disable="true" editable="false" prefHeight="25.0" prefWidth="316.0" text="1" GridPane.rowIndex="1" />
+                    <Label prefHeight="35.0" prefWidth="320.0" text="Nombre del Producto" GridPane.rowIndex="3" />
+                    <Label prefHeight="57.0" prefWidth="320.0" text="Precio del producto" GridPane.rowIndex="5" />
+                    <TextField prefHeight="28.0" prefWidth="320.0" promptText="Ejemplo: Tarjeta" GridPane.rowIndex="4" />
+                    <TextField prefHeight="28.0" prefWidth="320.0" promptText="Ingrese el precio en pesos" GridPane.rowIndex="6" />
+                    <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="7" />
+               <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="320.0" text="Agregar" GridPane.rowIndex="8" />
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                </rowConstraints>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets></GridPane>
+        </Tab>
+        <Tab text="Modificar productos">
+            <GridPane alignment="CENTER" prefHeight="400.0" prefWidth="700.0">
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               <RowConstraints />
+                </rowConstraints>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+                <Label prefHeight="17.0" prefWidth="297.0" text="Id del Producto" />
+                <ComboBox prefHeight="23.0" prefWidth="319.0" promptText="Seleccione un ID" GridPane.rowIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="1 - Gráfica" />
+                            <String fx:value="2 - Gráfica" />
+                            <String fx:value="3 - Gráfica" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label prefHeight="15.0" prefWidth="297.0" text="Nombre del Producto" GridPane.rowIndex="3" />
+                <Label prefHeight="15.0" prefWidth="315.0" text="Precio del producto" GridPane.rowIndex="5" />
+                <TextField editable="false" promptText="Seleccione el ID arriba" GridPane.rowIndex="4" />
+                <TextField editable="false" promptText="Seleccione el ID arriba" GridPane.rowIndex="6" />
+                <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="7" />
+                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="320.0" text="Modificar" GridPane.rowIndex="8" />
+            </GridPane>
+        </Tab>
+        <Tab text="Eliminar productos">
+            <GridPane alignment="CENTER" prefHeight="400.0" prefWidth="700.0">
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints />
+                </rowConstraints>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+                <Label prefHeight="17.0" prefWidth="297.0" text="Id del Producto" />
+                <ComboBox prefHeight="23.0" prefWidth="319.0" promptText="Seleccione un ID" GridPane.rowIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="1 - Gráfica" />
+                            <String fx:value="2 - Gráfica" />
+                            <String fx:value="3 - Gráfica" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label prefHeight="15.0" prefWidth="297.0" text="Nombre del Producto" GridPane.rowIndex="3" />
+                <Label prefHeight="15.0" prefWidth="315.0" text="Precio del producto" GridPane.rowIndex="5" />
+                <TextField editable="false" promptText="Seleccione el ID arriba" GridPane.rowIndex="4" />
+                <TextField editable="false" promptText="Seleccione el ID arriba" GridPane.rowIndex="6" />
+                <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="7" />
+                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="320.0" text="Eliminar " GridPane.rowIndex="8" />
+            </GridPane>
+        </Tab>
+        <Tab disable="true" text="" />
+    </TabPane>
 </Pane>
