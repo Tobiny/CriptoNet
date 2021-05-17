@@ -11,21 +11,14 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-<<<<<<< HEAD
-          <root url="jar://$MODULE_DIR$/../../../../sqljdbc_9.2/enu/mssql-jdbc-9.2.1.jre8.jar!/" />
-=======
           <root url="jar://$MODULE_DIR$/sqljdbc_9.2/enu/mssql-jdbc-9.2.1.jre8.jar!/" />
->>>>>>> conexion
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-<<<<<<< HEAD
     <orderEntry type="library" name="javafx-swt" level="project" />
     <orderEntry type="library" name="mssql-jdbc-9.2.1.jre15" level="project" />
     <orderEntry type="library" name="mssql-jdbc-9.2.1.jre8" level="project" />
-=======
->>>>>>> conexion
   </component>
 </module>
