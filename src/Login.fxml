@@ -5,22 +5,23 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<FlowPane alignment="center" hgap="10" prefHeight="511.0" prefWidth="812.0" styleClass="bg1" stylesheets="@styles.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<FlowPane alignment="center" hgap="10" prefHeight="511.0" prefWidth="812.0" styleClass="bg1" stylesheets="@styles.css" vgap="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller">
     <Pane prefHeight="458.0" prefWidth="651.0" styleClass="rounded_pn">
         <Pane prefHeight="458.0" prefWidth="325.0" styleClass="login_pn_left">
             <ImageView fitHeight="242.0" fitWidth="251.0" layoutX="37.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@src/img-02.png" />
             </ImageView>
         </Pane>
-        <TextField fx:id="userTxtF" accessibleHelp="ADASD" accessibleRoleDescription="SAD" accessibleText="Aaaaa" layoutX="382.0" layoutY="194.0" prefHeight="35.0" prefWidth="220.0" promptText="Usuario" styleClass="lg_input">
+        <TextField fx:id="userTxtF" accessibleHelp="" accessibleRoleDescription="" accessibleText="" layoutX="382.0" layoutY="194.0" prefHeight="35.0" prefWidth="220.0" promptText="Usuario" styleClass="lg_input">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets></TextField>
         <PasswordField fx:id="passFld" layoutX="382.0" layoutY="243.0" prefHeight="35.0" prefWidth="220.0" promptText="Contraseña" styleClass="lg_input" />
-        <Button fx:id="loginBtn" alignment="CENTER" focusTraversable="false" layoutX="410.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#enviaLogin" prefHeight="40.0" prefWidth="164.0" styleClass="lg_btn" text="Ingresar" textAlignment="CENTER" />
+        <Button fx:id="loginBtn" alignment="CENTER" focusTraversable="false" layoutX="410.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#enviaLogin" prefHeight="40.0" prefWidth="164.0" styleClass="lg_btn" text="Ingresar" textAlignment="CENTER" />
         <Label layoutX="410.0" layoutY="106.0" prefHeight="78.0" prefWidth="164.0" styleClass="login_txt1" text="Ingreso a Base de Datos" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true" />
         <Label fx:id="logoLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="459.0" layoutY="31.0" onMousePressed="#showLogo" onMouseReleased="#hideLogo" prefHeight="67.0" prefWidth="66.0" styleClass="logo_lbl" text="C" textAlignment="CENTER" textOverrun="CLIP">
         </Label>
         <Label fx:id="logoLblH" layoutX="500.0" layoutY="56.0" styleClass="logo_lblHide" text="riptoNet" visible="false" />
+      <Label fx:id="logErrorLbl" layoutX="385.0" layoutY="282.0" prefHeight="35.0" prefWidth="234.0" styleClass="lg_error" text="Usuario o contraseña no válida, inténtelo de nuevo" visible="false" wrapText="true" />
     </Pane>
 </FlowPane>

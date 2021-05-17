@@ -28,8 +28,9 @@ public class Controller {
     public Pane cliBtn;
     public Pane mantBtn;
     public Pane venBtn;
+    public Pane userBtn;
     public Pane exitBtn;
-    public Label lbl1;
+    public Label logErrorLbl;
 
     //Fields de login
     public PasswordField passFld;
@@ -51,18 +52,23 @@ public class Controller {
         window.setScene(new Scene(root, 1280.0D, 720.0D));
     }
     public void changeSceneM(MouseEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Home.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Mantenimientos.fxml")));
         Stage window = (Stage) mantBtn.getScene().getWindow();
         window.setScene(new Scene(root, 1280.0D, 720.0D));
     }
+    public void changeSceneV(MouseEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Ventas.fxml")));
+        Stage window = (Stage) venBtn.getScene().getWindow();
+        window.setScene(new Scene(root, 1280.0D, 720.0D));
+    }
     public void changeSceneC(MouseEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Home.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Clientes.fxml")));
         Stage window = (Stage) cliBtn.getScene().getWindow();
         window.setScene(new Scene(root, 1280.0D, 720.0D));
     }
-    public void changeSceneV(MouseEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Home.fxml")));
-        Stage window = (Stage) venBtn.getScene().getWindow();
+    public void changeSceneU(MouseEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("UsuariosBD.fxml")));
+        Stage window = (Stage) userBtn.getScene().getWindow();
         window.setScene(new Scene(root, 1280.0D, 720.0D));
     }
 
@@ -72,11 +78,9 @@ public class Controller {
 
 
     public void enviaLogin(MouseEvent actionEvent) throws IOException {
-        //Saca el texto que está en el textfild cuando se presiona el botón
-        System.out.println(userTxtF.getText());
-        System.out.println(passFld.getText());
+        logErrorLbl.setVisible(false);
         String connectionUrl =
-                "jdbc:sqlserver://localhost:1433;"
+                "jdbc:sqlserver://CriptoNet.mssql.somee.com;"
                         + "database=CriptoNet;"
                         + "user="+userTxtF.getText()+";"
                         + "password="+passFld.getText()+";"
@@ -87,6 +91,7 @@ public class Controller {
             changeSceneH();
         }
         catch (SQLException ex){
+            logErrorLbl.setVisible(true);
             ex.printStackTrace();
         }
 
