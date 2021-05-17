@@ -80,7 +80,7 @@ public class Controller {
     public void enviaLogin(MouseEvent actionEvent) throws IOException {
         logErrorLbl.setVisible(false);
         String connectionUrl =
-                "jdbc:sqlserver://localhost:1433;"
+                "jdbc:sqlserver://CriptoNet.mssql.somee.com;"
                         + "database=CriptoNet;"
                         + "user="+userTxtF.getText()+";"
                         + "password="+passFld.getText()+";"

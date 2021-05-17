@@ -54,6 +54,10 @@
     -fx-text-fill: darkred;
     -fx-font-size: 11;
 }
+.lg_error {
+    -fx-text-fill: darkred;
+    -fx-font-size: 11;
+}
 
 .logo_lbl:pressed, .logo_lbl_white:pressed {
     -fx-translate-x: -25;
