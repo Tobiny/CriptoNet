@@ -120,7 +120,7 @@ public class Controller implements Initializable {
     public void enviaLogin(MouseEvent actionEvent) throws IOException {
         logErrorLbl.setVisible(false);
         String connectionUrl =
-                "jdbc:sqlserver://CriptoNet.mssql.somee.com;"
+                "jdbc:sqlserver://187.198.160.103;"
                         + "database=CriptoNet;"
                         + "user="+userTxtF.getText()+";"
                         + "password="+passFld.getText()+";"
