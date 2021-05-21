@@ -83,15 +83,10 @@
             </Pane>
         </GridPane>
     </Pane>
-<<<<<<< HEAD
     <TabPane layoutX="235.0" layoutY="-6.0" prefHeight="720.0" prefWidth="1041.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-            <Tab text="Vender" />
-            <Tab text="Consultar venta" />
-            <Tab disable="true" text="" />
-            <Tab disable="true" text="" />
-        </tabs>
+        <Tab text="Vender"/>
+        <Tab text="Consultar venta"/>
+        <Tab disable="true" text=""/>
+        <Tab disable="true" text=""/>
     </TabPane>
-=======
->>>>>>> conexion
 </Pane>

@@ -7,8 +7,11 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="home_tab_pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller">
+<?import src.NumberTextField?>
+<?import javafx.collections.FXCollections.*?>
+<?import com.sun.javafx.webkit.theme.RenderThemeImpl.FormTextField?>
+<?import src.DecimalField?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="home_tab_pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
     <Pane prefHeight="720.0" prefWidth="240.0" styleClass="left_menu">
         <Label fx:id="logoLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="30.0" onMousePressed="#showLogo" onMouseReleased="#hideLogo" prefHeight="67.0" prefWidth="66.0" styleClass="logo_lbl_white" text="C" textAlignment="CENTER" textOverrun="CLIP">
         </Label>
@@ -90,13 +93,15 @@
                   <GridPane.margin>
                      <Insets />
                   </GridPane.margin></Label>
-                    <TextField disable="true" editable="false" prefHeight="25.0" prefWidth="316.0" text="1" GridPane.rowIndex="1" />
+                    <TextField fx:id="idProA" disable="true" editable="false" prefHeight="25.0" prefWidth="316.0" text="1" GridPane.rowIndex="1" />
                     <Label prefHeight="35.0" prefWidth="320.0" text="Nombre del Producto" GridPane.rowIndex="3" />
-                    <Label prefHeight="57.0" prefWidth="320.0" text="Precio del producto" GridPane.rowIndex="5" />
-                    <TextField prefHeight="28.0" prefWidth="320.0" promptText="Ejemplo: Tarjeta" GridPane.rowIndex="4" />
-                    <TextField prefHeight="28.0" prefWidth="320.0" promptText="Ingrese el precio en pesos" GridPane.rowIndex="6" />
-                    <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="7" />
-               <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="320.0" text="Agregar" GridPane.rowIndex="8" />
+                    <TextField fx:id="nomProA" prefHeight="28.0" prefWidth="320.0" promptText="Ejemplo: Tarjeta" GridPane.rowIndex="4" />
+                    <Label prefHeight="57.0" prefWidth="320.0" text="Precio del Producto" GridPane.rowIndex="5" />
+                    <DecimalField fx:id="preProA" prefHeight="28.0" prefWidth="320.0" promptText="Precio en pesos, por unidad" GridPane.rowIndex="6" />
+                    <Label prefHeight="57.0" prefWidth="320.0" text="Cantidad de Productos" GridPane.rowIndex="7" />
+                    <NumberTextField fx:id="cantProA" prefHeight="28.0" prefWidth="320.0" promptText="Ingrese las unidades" GridPane.rowIndex="8" />
+                    <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="9" />
+               <Button fx:id="btnProA" mnemonicParsing="false" onMouseClicked="#agregarProductos" prefHeight="69.0" prefWidth="320.0" text="Agregar" GridPane.rowIndex="10" />
                 </children>
                 <columnConstraints>
                     <ColumnConstraints />
@@ -105,6 +110,8 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
@@ -134,6 +141,9 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
                <RowConstraints />
                 </rowConstraints>
                 <styleClass>
@@ -141,22 +151,16 @@
                     <String fx:value="pane_w_form" />
                 </styleClass>
                 <Label prefHeight="17.0" prefWidth="297.0" text="Id del Producto" />
-                <ComboBox prefHeight="23.0" prefWidth="319.0" promptText="Seleccione un ID" GridPane.rowIndex="1">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="1 - Gráfica" />
-                            <String fx:value="2 - Gráfica" />
-                            <String fx:value="3 - Gráfica" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-
+                <ComboBox fx:id="idProM" prefHeight="23.0" prefWidth="319.0" promptText="Seleccione un ID" GridPane.rowIndex="1"/>
                 <Label prefHeight="15.0" prefWidth="297.0" text="Nombre del Producto" GridPane.rowIndex="3" />
-                <Label prefHeight="15.0" prefWidth="315.0" text="Precio del producto" GridPane.rowIndex="5" />
-                <TextField editable="false" promptText="Seleccione el ID arriba" GridPane.rowIndex="4" />
-                <TextField editable="false" promptText="Seleccione el ID arriba" GridPane.rowIndex="6" />
+                <TextField fx:id="nomProM" editable="false" GridPane.rowIndex="4" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="Precio del Producto" GridPane.rowIndex="5" />
+                <DecimalField fx:id="preProM" prefHeight="28.0" prefWidth="320.0"  GridPane.rowIndex="6" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="Cantidad de Productos" GridPane.rowIndex="7" />
+                <NumberTextField fx:id="cantProM" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="8" />
+                <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="9" />
                 <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="7" />
-                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="320.0" text="Modificar" GridPane.rowIndex="8" />
+                <Button fx:id="btnProM" mnemonicParsing="false" prefHeight="30.0" prefWidth="320.0" text="Modificar" GridPane.rowIndex="10" />
             </GridPane>
         </Tab>
         <Tab text="Eliminar productos">
@@ -173,6 +177,9 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints />
                 </rowConstraints>
                 <styleClass>
@@ -189,15 +196,18 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
-
                 <Label prefHeight="15.0" prefWidth="297.0" text="Nombre del Producto" GridPane.rowIndex="3" />
-                <Label prefHeight="15.0" prefWidth="315.0" text="Precio del producto" GridPane.rowIndex="5" />
-                <TextField editable="false" promptText="Seleccione el ID arriba" GridPane.rowIndex="4" />
-                <TextField editable="false" promptText="Seleccione el ID arriba" GridPane.rowIndex="6" />
+                <TextField fx:id="nomProE" editable="false" GridPane.rowIndex="4" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="Precio del Producto" GridPane.rowIndex="5" />
+                <DecimalField fx:id="preProE" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="6" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="Cantidad de Productos" GridPane.rowIndex="7" />
+                <NumberTextField fx:id="cantProE" prefHeight="28.0" prefWidth="320.0"  GridPane.rowIndex="8" />
+                <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="9" />
                 <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="7" />
-                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="320.0" text="Eliminar " GridPane.rowIndex="8" />
+                <Button fx:id="btnProE" mnemonicParsing="false" prefHeight="30.0" prefWidth="320.0" text="Eliminar" GridPane.rowIndex="10" />
             </GridPane>
         </Tab>
-        <Tab disable="true" text="" />
+
+        <Tab text="Consultar productos" />
     </TabPane>
 </Pane>
