@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="home_tab_pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MantenimientoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="home_tab_pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="ServiciosController">
     <Pane prefHeight="720.0" prefWidth="240.0" styleClass="left_menu">
         <Label fx:id="logoLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="30.0" onMousePressed="#showLogo" onMouseReleased="#hideLogo" prefHeight="67.0" prefWidth="66.0" styleClass="logo_lbl_white" text="C" textAlignment="CENTER" textOverrun="CLIP">
         </Label>
@@ -39,30 +39,29 @@
                     <String fx:value="left_btn_h" />
                 </styleClass>
             </Pane>
-            <Pane onMouseClicked="#changeSceneC" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="1">
+            <Pane  onMouseClicked="#changeSceneC" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="1">
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@src/icons/customer.png" />
                 </ImageView>
                 <Label layoutX="49.0" layoutY="11.0" prefHeight="35.0" prefWidth="151.0" text="Clientes" />
                 <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
             </Pane>
-            <Pane onMouseClicked="#changeSceneV" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="2">
+            <Pane  onMouseClicked="#changeSceneV" prefHeight="51.0" prefWidth="200.0" GridPane.rowIndex="2">
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@src/icons/sales.png" />
+                    <Image url="@src/icons/salesW.png" />
                 </ImageView>
                 <Label layoutX="49.0" layoutY="10.0" prefHeight="35.0" prefWidth="138.0" text="Ventas" />
                 <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
+                <styleClass>
+                    <String fx:value="left_btn_h" />
+                </styleClass>
             </Pane>
-            <Pane onMouseClicked="#changeSceneM" prefHeight="51.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <Pane  onMouseClicked="#changeSceneM" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="3">
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@src/icons/maintenanceW.png" />
+                    <Image url="@src/icons/maintenance.png" />
                 </ImageView>
                 <Label layoutX="49.0" layoutY="10.0" prefHeight="35.0" prefWidth="151.0" text="Mantenimiento" />
                 <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
-                <styleClass>
-                    <String fx:value="left_btn_h" />
-                    <String fx:value="left_btn_focused" />
-                </styleClass>
             </Pane>
             <Pane onMouseClicked="#changeSceneE" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="4">
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
@@ -77,15 +76,10 @@
                 </ImageView>
                 <Label layoutX="49.0" layoutY="10.0" prefHeight="35.0" prefWidth="151.0" text="Servicios" />
                 <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
-            </Pane>
-
-
-            <Pane prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="11">
-                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@src/icons/exit.png" />
-                </ImageView>
-                <Label layoutX="49.0" layoutY="10.0" onMouseClicked="#exit" prefHeight="35.0" prefWidth="151.0" text="Salir" />
-                <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
+                <styleClass>
+                    <String fx:value="left_btn_h" />
+                    <String fx:value="left_btn_focused" />
+                </styleClass>
             </Pane>
 
             <Pane prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="11">
@@ -97,12 +91,11 @@
             </Pane>
         </GridPane>
     </Pane>
+
     <TabPane layoutX="235.0" layoutY="-6.0" prefHeight="720.0" prefWidth="1041.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-            <Tab text="Agregar mantenimiento" />
-            <Tab text="Consultar mantenimiento" />
-            <Tab text="Eliminar mantenimiento" />
-            <Tab disable="true" text="" />
-        </tabs>
+        <Tab text="Agregar"/>
+        <Tab text="Consultar"/>
+        <Tab text="Eliminar"/>
+        <Tab disable="true" text=""/>
     </TabPane>
 </Pane>
