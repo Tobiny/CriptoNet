@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-import javafx.collections.FXCollections;
+import javafx.collections .FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import src.DecimalField;
 import src.NumberTextField;
 
-import javax.swing.*;
+import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -52,7 +52,7 @@ public class Controller implements Initializable {
      */
 
     //--------------------Menu agregar
-    public TextField idProA;
+    public TextField idProA = new TextField();
     public TextField nomProA;
     public NumberTextField cantProA;
     public DecimalField preProA;
@@ -61,26 +61,71 @@ public class Controller implements Initializable {
     //--------------------Menu modificar
     //public ComboBox idProM;
     @FXML
-    public ComboBox<String> idProM = new ComboBox<>();
-    public TextField nomProM;
+    public ComboBox<String> nomProM = new ComboBox<>();
+    public ComboBox<String> nomProE = new ComboBox<>();
+    public TextField idProM;
     public NumberTextField cantProM;
     public DecimalField preProM;
     public Button btnProM;
+    public TextField idProE;
+    public NumberTextField cantProE;
+    public DecimalField preProE;
+    public Button btnProE;
 
     //Logo
     public Label logoLblH;
     public Label logoLbl;
 
-    public Controller()  {
-        //prueba observable list
-    }
-    public void agregarProductos(MouseEvent actionEvent) throws IOException {
-        //La id de los productos es ideProA - ahi lo ves tú.
-        nomProA.getText(); //Nombre del producto
-        cantProA.getText(); //Cantidad de productos
-        preProA.getText(); //Precio
-    }
+    //Objetos Conexión
+    public ResultSet resultSet = null;
+    public static String connectionUrl;
 
+    //Constructor
+    public Controller()  {}
+
+    //LogIn
+    public void enviaLogin(MouseEvent actionEvent) throws IOException {
+        connectionUrl = "jdbc:sqlserver://localhost:1433; database=CriptoNet; user="+userTxtF.getText()+"; password="+passFld.getText()+"; trustServerCertificate=false; loginTimeout=30;";
+        logErrorLbl.setVisible(false);
+        try {
+            Connection connection = DriverManager.getConnection(connectionUrl);
+            changeSceneH();
+        }
+        catch (SQLException ex){
+            logErrorLbl.setVisible(true);
+            ex.printStackTrace();
+        }
+
+    }
+    //Agregar Productos
+    public void agregarProductos(MouseEvent actionEvent) throws IOException {
+        try (Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();){
+            String selectSql = "INSERT INTO Productos VALUES ('"+nomProA.getText()+"', '"+preProA.getText()+" ',' "+cantProA.getText()+"');";
+            statement.executeUpdate(selectSql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    //Modificar Productos
+    public void modificarProductos (MouseEvent actionEvent) throws IOException{
+        try (Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();) {
+            String selectSql = "UPDATE Productos SET ValorVenta = "+preProM.getText()+", Existencia = "+cantProM.getText()+" WHERE IdProducto = "+idProM.getText();
+            statement.executeUpdate(selectSql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void eliminarProductos(MouseEvent actionEvent) throws IOException{
+        try (Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();){
+            String selectSql = "Delete Productos Where IdProducto = "+idProE.getText();
+            statement.executeUpdate(selectSql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void changeSceneH() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Home.fxml")));
         Stage window = (Stage) loginBtn.getScene().getWindow();
@@ -90,7 +135,6 @@ public class Controller implements Initializable {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Productos.fxml")));
         Stage window = (Stage) proBtn.getScene().getWindow();
         window.setScene(new Scene(root, 1280.0D, 720.0D));
-
     }
     public void changeSceneM(MouseEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Mantenimientos.fxml")));
@@ -112,31 +156,9 @@ public class Controller implements Initializable {
         Stage window = (Stage) userBtn.getScene().getWindow();
         window.setScene(new Scene(root, 1280.0D, 720.0D));
     }
-
     public void exit(MouseEvent actionEvent) throws IOException {
         System.exit(0);
     }
-
-    public void enviaLogin(MouseEvent actionEvent) throws IOException {
-        logErrorLbl.setVisible(false);
-        String connectionUrl =
-                "jdbc:sqlserver://187.198.160.103;"
-                        + "database=CriptoNet;"
-                        + "user="+userTxtF.getText()+";"
-                        + "password="+passFld.getText()+";"
-                        + "trustServerCertificate=false;"
-                        + "loginTimeout=30;";
-        try {
-            Connection connection = DriverManager.getConnection(connectionUrl);
-            changeSceneH();
-        }
-        catch (SQLException ex){
-            logErrorLbl.setVisible(true);
-            ex.printStackTrace();
-        }
-    }
-
-
     public void showLogo(MouseEvent actionEvent) {
         this.logoLblH.setVisible(true);
     }
@@ -146,7 +168,54 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> idProM_items = FXCollections.observableArrayList("a", "b", "c", "d");
-        idProM.setItems(idProM_items);
+        //CargarCombobox
+        try(Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT NomProd FROM Productos");
+            while (resultSet.next()){
+                nomProM.getItems().addAll(resultSet.getString("NomProd"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        //ComboDinamica
+        nomProM.setOnAction(event ->{
+            try(Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement();){
+                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE NomProd = '"+nomProM.getValue()+"'");
+                while (resultSet.next()){
+                    idProM.setText(resultSet.getString("IdProducto"));
+                    preProM.setText(resultSet.getString("ValorVenta"));
+                    cantProM.setText(resultSet.getString("Existencia"));
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        });
+
+        //CargarComboboxE
+        try(Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT NomProd FROM Productos");
+            while (resultSet.next()){
+                nomProE.getItems().addAll(resultSet.getString("NomProd"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        //ComboDinamicaE
+        nomProE.setOnAction(event ->{
+            try(Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement();){
+                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE NomProd = '"+nomProE.getValue()+"'");
+                while (resultSet.next()){
+                    idProE.setText(resultSet.getString("IdProducto"));
+                    preProE.setText(resultSet.getString("ValorVenta"));
+                    cantProE.setText(resultSet.getString("Existencia"));
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        });
     }
 }
