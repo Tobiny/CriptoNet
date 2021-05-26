@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 import javafx.collections .FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import src.Conexion;
 import src.DecimalField;
 import src.NumberTextField;
 
@@ -33,8 +30,6 @@ import java.util.ResourceBundle;
 
 
 public class Controller implements Initializable {
-
-    public Button loginBtn;
     //Botones de paneles
     public Pane proBtn;
     public Pane cliBtn;
@@ -42,22 +37,19 @@ public class Controller implements Initializable {
     public Pane venBtn;
     public Pane userBtn;
     public Pane exitBtn;
-
+    public Button loginBtn;
 
     //Fields de login
     public PasswordField passFld;
     public TextField userTxtF;
     public Label logErrorLbl;
 
-
-
     //Logo
     public Label logoLblH;
     public Label logoLbl;
 
-    //Objetos Conexión
-    public ResultSet resultSet = null;
-    public static String connectionUrl;
+    //Conexion
+    Conexion c = new Conexion();
     private Object HomeController;
 
     //Constructor
@@ -65,15 +57,11 @@ public class Controller implements Initializable {
 
     //LogIn
     public void enviaLogin(MouseEvent actionEvent) throws IOException {
-        connectionUrl = "jdbc:sqlserver://187.198.140.105; database=CriptoNet; user="+userTxtF.getText()+"; password="+passFld.getText()+"; trustServerCertificate=false; loginTimeout=30;";
         logErrorLbl.setVisible(false);
-        try {
-            Connection connection = DriverManager.getConnection(connectionUrl);
+        if(c.conectar(userTxtF.getText(),passFld.getText())){
             changeSceneH(actionEvent);
-        }
-        catch (SQLException ex){
+        }else{
             logErrorLbl.setVisible(true);
-            ex.printStackTrace();
         }
     }
 
@@ -102,54 +90,6 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*CargarCombobox
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT NomProd FROM Productos");
-            while (resultSet.next()){
-                nomProM.getItems().addAll(resultSet.getString("NomProd"));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        //ComboDinamica
-        nomProM.setOnAction(event ->{
-            try(Connection connection = DriverManager.getConnection(connectionUrl);
-                Statement statement = connection.createStatement();){
-                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE NomProd = '"+nomProM.getValue()+"'");
-                while (resultSet.next()){
-                    idProM.setText(resultSet.getString("IdProducto"));
-                    preProM.setText(resultSet.getString("ValorVenta"));
-                    cantProM.setText(resultSet.getString("Existencia"));
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        });
 
-        //CargarComboboxE
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT NomProd FROM Productos");
-            while (resultSet.next()){
-                nomProE.getItems().addAll(resultSet.getString("NomProd"));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        //ComboDinamicaE
-        nomProE.setOnAction(event ->{
-            try(Connection connection = DriverManager.getConnection(connectionUrl);
-                Statement statement = connection.createStatement();){
-                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE NomProd = '"+nomProE.getValue()+"'");
-                while (resultSet.next()){
-                    idProE.setText(resultSet.getString("IdProducto"));
-                    preProE.setText(resultSet.getString("ValorVenta"));
-                    cantProE.setText(resultSet.getString("Existencia"));
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        });*/
     }
 }
