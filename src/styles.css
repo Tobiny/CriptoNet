@@ -17,6 +17,10 @@
     font-family: 'Montserrat Bold';
     src: url('src/fonts/montserrat/Montserrat-Bold.ttf') format("truetype");
 }
+@font-face {
+    font-family: 'Montserrat Medium';
+    src: url('src/fonts/montserrat/Montserrat-Medium.ttf') format("truetype");
+}
 
 .fonts {
     -fx-font-family: 'Poppins Regular';
@@ -118,19 +122,36 @@
     -fx-text-fill: dimgray;
     -fx-prompt-text-fill: gray;
 }
+.pane_w_form > .text-area {
+    -fx-border-color: gray;
+    fx-background-position: right center;
+    -fx-background-color: #dddddd;
+    -fx-font-size: 14;
+    -fx-text-fill: dimgray;
+    -fx-prompt-text-fill: gray;
+}
 
+.pane_w_form > .text-field:disabled{
+    -fx-background-position: right center;
+    -fx-background-color: #d4d4d4;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-font-size: 14;
+    -fx-text-fill: dimgray;
+    -fx-prompt-text-fill: gray;
+}
 /*.pane_w_form > .text-field{
     -fx-text-fill: firebrick;
 }*/
 
 
-.pane_w_form > .text-field:pressed {
+.pane_w_form > .text-field:pressed , .text-area:pressed {
     -fx-effect: dropshadow(three-pass-box, rgba(87,184,70, 0.8), 20, 0, 0, 0);
     -fx-scale-y: 1.05;
     -fx-scale-x: 1.05;
     -fx-text-fill: black;
 }
-.pane_w_form > .text-field:hover {
+.pane_w_form > .text-field:hover , .text-area:hover {
     -fx-scale-y: 1.05;
     -fx-scale-x: 1.05;
 }
@@ -225,7 +246,7 @@
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
     -fx-pref-height: 40px;
-    -fx-pref-width: 20em;
+    -fx-pref-width: 16em;
     -fx-background-insets: 0;
 }
 
@@ -283,4 +304,51 @@
 .tab_pane_content {
     -fx-alignment: center;
     -fx-start-margin: 10px;
+}
+
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #6f42c1;
+    -fx-font-size: 15px;
+    -fx-font-family: "Montserrat Medium";
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: black;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #D2D2D2;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+    -fx-border-color: #D2D2D2;
+    -fx-font-family: "Poppins Regular";
+}
+
+/*.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}*/
+
+.table-row-cell:selected {
+    -fx-background-color: #8BCF78;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
 }

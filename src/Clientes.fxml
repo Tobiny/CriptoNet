@@ -29,7 +29,7 @@
                 <RowConstraints />
                 <RowConstraints />
             </rowConstraints>
-            <Pane  onMouseClicked="#changeSceneP" prefHeight="51.0" prefWidth="200.0">
+            <Pane onMouseClicked="#changeSceneP" prefHeight="51.0" prefWidth="200.0">
                 <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@src/icons/products.png" />
                 </ImageView>
@@ -57,7 +57,7 @@
                 <Label layoutX="49.0" layoutY="10.0" prefHeight="35.0" prefWidth="138.0" text="Ventas" />
                 <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
             </Pane>
-            <Pane  onMouseClicked="#changeSceneM" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="3">
+            <Pane onMouseClicked="#changeSceneM" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="3">
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@src/icons/maintenance.png" />
                 </ImageView>
@@ -66,18 +66,19 @@
             </Pane>
             <Pane onMouseClicked="#changeSceneE" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="4">
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@src/icons/maintenance.png" />
+                    <Image url="@src/icons/empleado.png" />
                 </ImageView>
                 <Label layoutX="49.0" layoutY="10.0" prefHeight="35.0" prefWidth="151.0" text="Empleados" />
                 <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
             </Pane>
-            <Pane  onMouseClicked="#changeSceneS" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="5">
+            <Pane onMouseClicked="#changeSceneS" prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="5">
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@src/icons/maintenance.png" />
+                    <Image url="@src/icons/servicios.png" />
                 </ImageView>
                 <Label layoutX="49.0" layoutY="10.0" prefHeight="35.0" prefWidth="151.0" text="Servicios" />
                 <Line endX="94.0" layoutX="107.0" layoutY="50.0" startX="-108.0" styleClass="left_btn_h_line" />
             </Pane>
+
 
             <Pane prefHeight="51.0" prefWidth="200.0" styleClass="left_btn_h" GridPane.rowIndex="11">
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-3.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
@@ -88,12 +89,205 @@
             </Pane>
         </GridPane>
     </Pane>
-    <TabPane layoutX="235.0" layoutY="-6.0" prefHeight="720.0" prefWidth="1041.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-            <Tab text="Agregar clientes" />
-            <Tab text="Consultar cliente" />
-            <Tab text="Modificar datos cliente" />
-            <Tab disable="true" text="" />
-        </tabs>
+    <TabPane layoutX="235.0" layoutY="-6.0" prefHeight="728.0" prefWidth="1048.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Agregar clientes">
+            <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="700.0">
+                <children>
+                    <Label prefHeight="35.0" prefWidth="320.0" text="Id del Cliente" GridPane.rowIndex="1" />
+                    <TextField fx:id="idCA" disable="true" editable="false" prefHeight="28.0" prefWidth="320.0" promptText="1" GridPane.rowIndex="2" />
+                    <Label prefHeight="30.0" prefWidth="426.0" text="Id Empleado asignado (para mantenimentos)" GridPane.rowIndex="3" />
+                    <ComboBox fx:id="idEA" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un empleado" GridPane.rowIndex="4" />
+                    <Label prefHeight="35.0" prefWidth="320.0" text="Nombre del Cliente" GridPane.rowIndex="5" />
+                    <TextField fx:id="nomA" prefHeight="28.0" prefWidth="320.0" promptText="Ingrese el nombre del cliente" GridPane.rowIndex="6" />
+                    <Label prefHeight="35.0" prefWidth="320.0" text="Domicilio del Cliente" GridPane.rowIndex="7" />
+                    <TextArea fx:id="domA" prefHeight="80.0" prefWidth="437.0" promptText="Ingrese el domicilio " GridPane.rowIndex="8" />
+                    <Label prefHeight="57.0" prefWidth="320.0" text="RFC del Cliente" GridPane.rowIndex="9" />
+                    <TextField fx:id="rfcA" prefHeight="28.0" prefWidth="320.0" promptText="Ingrese el RFC" GridPane.rowIndex="10" />
+                    <Label prefHeight="57.0" prefWidth="320.0" text="Tipo de minero" GridPane.rowIndex="11" />
+                    <ComboBox fx:id="tmA" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un tipo de minero" GridPane.rowIndex="12" />
+                    <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
+                    <Button fx:id="btnA" mnemonicParsing="false" onMouseClicked="#agregarCliente" prefHeight="32.0" prefWidth="437.0" text="Agregar" GridPane.rowIndex="14" />
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="-Infinity" prefHeight="70.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               <RowConstraints />
+               <RowConstraints />
+                </rowConstraints>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+                <opaqueInsets>
+                </opaqueInsets></GridPane>
+        </Tab>
+        <Tab text="Modificar clientes">
+            <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="700.0">
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="-Infinity" prefHeight="70.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+                <opaqueInsets>
+                </opaqueInsets>
+                <Label prefHeight="35.0" prefWidth="320.0" text="Id del Cliente" GridPane.rowIndex="1" />
+                <ComboBox fx:id="idCM" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id" GridPane.rowIndex="2" />
+                <Label prefHeight="30.0" prefWidth="426.0" text="Id Empleado asignado (para mantenimentos)" GridPane.rowIndex="3" />
+                <ComboBox fx:id="idEM" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="4" />
+                <Label prefHeight="35.0" prefWidth="320.0" text="Nombre del Cliente" GridPane.rowIndex="5" />
+                <TextField fx:id="nomM" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="6" />
+                <Label prefHeight="35.0" prefWidth="320.0" text="Domicilio del Cliente" GridPane.rowIndex="7" />
+                <TextArea fx:id="domM" prefHeight="80.0" prefWidth="437.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="8" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="RFC del Cliente" GridPane.rowIndex="9" />
+                <TextField fx:id="rfcM" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="10" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="Tipo de minero" GridPane.rowIndex="11" />
+                <ComboBox fx:id="tmM" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="12" />
+                <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
+                <Button fx:id="btnM" mnemonicParsing="false" onMouseClicked="#modificarCliente" prefHeight="32.0" prefWidth="437.0" text="Modificar" GridPane.rowIndex="14" />
+            </GridPane>
+
+        </Tab>
+        <Tab text="Eliminar clientes">
+            <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="700.0">
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="-Infinity" prefHeight="70.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+                <opaqueInsets>
+                </opaqueInsets>
+                <Label prefHeight="35.0" prefWidth="320.0" text="Id del Cliente" GridPane.rowIndex="1" />
+                <ComboBox fx:id="idCE" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id" GridPane.rowIndex="2" />
+                <Label prefHeight="30.0" prefWidth="426.0" text="Id Empleado asignado (para mantenimentos)" GridPane.rowIndex="3" />
+                <ComboBox fx:id="idEE" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="4" />
+                <Label prefHeight="35.0" prefWidth="320.0" text="Nombre del Cliente" GridPane.rowIndex="5" />
+                <TextField fx:id="nomE" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="6" />
+                <Label prefHeight="35.0" prefWidth="320.0" text="Domicilio del Cliente" GridPane.rowIndex="7" />
+                <TextArea fx:id="domE" prefHeight="80.0" prefWidth="437.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="8" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="RFC del Cliente" GridPane.rowIndex="9" />
+                <TextField fx:id="rfcE" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="10" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="Tipo de minero" GridPane.rowIndex="11" />
+                <ComboBox fx:id="tmE" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="12" />
+                <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
+                <Button fx:id="btnE" mnemonicParsing="false" onMouseClicked="#modificarCliente" prefHeight="32.0" prefWidth="437.0" text="Modificar" GridPane.rowIndex="14" />
+            </GridPane>
+        </Tab>
+        <Tab text="Consulta general">
+            <Pane>
+                <TableView fx:id="proTable" prefHeight="673.0" prefWidth="1048.0">
+                    <columns>
+                        <TableColumn fx:id="idCTable" prefWidth="137.0" text="Id de cliente" />
+                        <TableColumn fx:id="idTTable" prefWidth="211.0" text="Empleado asignado" />
+                        <TableColumn fx:id="nomTable" prefWidth="234.0" text="Nombre del cliente" />
+                        <TableColumn fx:id="domTable" prefWidth="181.0" text="Domicilio del cliente" />
+                        <TableColumn fx:id="rfcTable" prefWidth="168.0" text="RFC del cliente" />
+                        <TableColumn fx:id="tipoMTable" prefWidth="195.0" text="Tipo de minero" />
+                    </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+                </TableView>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+            </Pane>
+        </Tab>
+        <Tab text="Consulta individual">
+            <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="700.0">
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="-Infinity" prefHeight="70.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+                <opaqueInsets>
+                </opaqueInsets>
+                <Label prefHeight="35.0" prefWidth="320.0" text="Id del Cliente" GridPane.rowIndex="1" />
+                <ComboBox fx:id="idCC" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id" GridPane.rowIndex="2" />
+                <Label prefHeight="30.0" prefWidth="426.0" text="Id Empleado asignado (para mantenimentos)" GridPane.rowIndex="3" />
+                <ComboBox fx:id="idEC" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="4" />
+                <Label prefHeight="35.0" prefWidth="320.0" text="Nombre del Cliente" GridPane.rowIndex="5" />
+                <TextField fx:id="nomC" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="6" />
+                <Label prefHeight="35.0" prefWidth="320.0" text="Domicilio del Cliente" GridPane.rowIndex="7" />
+                <TextArea fx:id="domC" prefHeight="80.0" prefWidth="437.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="8" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="RFC del Cliente" GridPane.rowIndex="9" />
+                <TextField fx:id="rfcC" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="10" />
+                <Label prefHeight="57.0" prefWidth="320.0" text="Tipo de minero" GridPane.rowIndex="11" />
+                <ComboBox fx:id="tmC" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="12" />
+                <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
+            </GridPane>
+        </Tab>
+
     </TabPane>
 </Pane>

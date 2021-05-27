@@ -10,7 +10,14 @@ public class Conexion {
         return connectionUrl;
     }
     public boolean conectar(String User, String Password){
-        connectionUrl = "jdbc:sqlserver://localhost; database=CriptoNet; user="+User+"; password="+Password+"; trustServerCertificate=false; loginTimeout=30;";
+        //Conexión local
+        //connectionUrl = "jdbc:sqlserver://localhost; database=CriptoNet; user="+User+"; password="+Password+"; trustServerCertificate=false; loginTimeout=30;";
+        //-------------directa
+        connectionUrl = "jdbc:sqlserver://localhost; database=CriptoNet; user=ChaJimLuis; password=ChaJimLuis; trustServerCertificate=false; loginTimeout=30;";
+        //Conexión remota
+        //connectionUrl = "jdbc:sqlserver://187.198.140.105; database=CriptoNet; user="+User+"; password="+Password+"; trustServerCertificate=false; loginTimeout=30;";
+        //-------------directa
+        //connectionUrl = "jdbc:sqlserver://187.198.140.105; database=CriptoNet; user=ChaJimLuis; password=ChaJimLuis; trustServerCertificate=false; loginTimeout=30;";
         try {
             Connection connection = DriverManager.getConnection(connectionUrl);
             return true;

@@ -1,18 +1,20 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import src.Conexion;
 import src.DecimalField;
 import src.NumberTextField;
+import src.Producto;
+
 import java.sql.*;
 import javax.swing.*;
 import java.io.IOException;
@@ -22,6 +24,7 @@ import java.util.ResourceBundle;
 
 public class ProductosController implements Initializable {
 
+    //Cambiar de vistas
     private Object ProductosController;
     private Object VentasController;
     private Object MantenimientosController;
@@ -29,13 +32,12 @@ public class ProductosController implements Initializable {
     private Object EmpleadosController;
     private Object ServiciosController;
 
-    public ProductosController(){}
-
     //Logo
     public Label logoLblH;
     public Label logoLbl;
     //Fields de productos
     //--------------------Menu agregar
+    public TextField idProA;
     public TextField nomProA;
     public NumberTextField cantProA;
     public DecimalField preProA;
@@ -53,6 +55,19 @@ public class ProductosController implements Initializable {
     public NumberTextField cantProE;
     public DecimalField preProE;
     public Button btnProE;
+    //--------------------Menu consultar
+    public TableColumn<Producto, String> idProTable;
+    public TableColumn<Producto, String> nomProTable;
+    public TableColumn<Producto, String> costProTable;
+    public TableColumn<Producto, String> uniProTable;
+    public TableView<Producto> proTable;
+    //--------------------Menu consulta individual
+    public ComboBox<String> nomProI;
+    public TextField idProI;
+    public NumberTextField cantProI;
+    public DecimalField preProI;
+    public Button btnProI;
+
     //Conexion
     static Conexion c = new Conexion();
     public static String connectionUrl = c.getConnectionUrl();
@@ -159,6 +174,8 @@ public class ProductosController implements Initializable {
             }
         }else JOptionPane.showMessageDialog(null, "El producto no fue eliminado", "Eliminar productos", JOptionPane.INFORMATION_MESSAGE);
     }
+
+
     public void exit(MouseEvent actionEvent) throws IOException { System.exit(0); }
     public void showLogo(MouseEvent actionEvent) {
         this.logoLblH.setVisible(true);
@@ -234,5 +251,25 @@ public class ProductosController implements Initializable {
         idProE.setText("");
         cantProE.setText("");
         preProE.setText("");
+
+        //Tabla de consulta
+        //proTable.getColumns().addAll(idProTable, nomProTable, costProTable, uniProTable);
+        ObservableList<Producto> datosTablaPro = FXCollections.observableArrayList();
+        try(Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT * FROM Productos");
+            while (resultSet.next()){
+                datosTablaPro.add(new Producto(resultSet.getString("IdProducto"), resultSet.getString("NomProd"), resultSet.getString("ValorVenta"), resultSet.getString("Existencia")));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        idProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("id"));
+        nomProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("nom"));
+        costProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("costo"));
+        uniProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("unidad"));
+        proTable.setItems(datosTablaPro);
+
+
     }
 }
