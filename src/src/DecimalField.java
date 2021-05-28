@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import static java.util.Objects.isNull;
 
 public class DecimalField extends TextField {
-    private static Pattern decimalPattern = Pattern.compile("[-]?[0-9]*(\\.[0-9]*)?");
+    private Pattern decimalPattern = Pattern.compile("[-]?[0-9]*(\\.[0-9]*)?");
 
     @Override
     public void replaceText(int start, int end, String text) {

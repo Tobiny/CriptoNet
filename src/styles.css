@@ -197,6 +197,22 @@
     -fx-background-color: #d2d2d2;
 
 }
+.pane_w_form > .date-picker .cell:hover {
+    -fx-background-color: #d2d2d2;
+
+}
+
+.pane_w_form > .date-picker .text-field{
+    -fx-background-color: #DDDDDD;
+    -fx-text-fill: gray;
+}
+.pane_w_form >   .date-picker .cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: dimgray;
+    -fx-font-family: "Poppins Regular";
+}
+
+
 
 .home_tab_pane {
     /* -fx-tab-min-width: 4.583em;  55 */

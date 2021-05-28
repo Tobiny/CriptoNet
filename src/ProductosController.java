@@ -221,7 +221,7 @@ public class ProductosController implements Initializable {
                 resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE IdProducto = '"+getId(nomProM.getValue())+"'");
                 while (resultSet.next()){
                     idProM.setText(resultSet.getString("NomProd"));
-                    preProM.setText(resultSet.getString("ValorVenta"));
+                    preProM.setText("$"+resultSet.getString("ValorVenta"));
                     cantProM.setText(resultSet.getString("Existencia"));
                 }
             }catch (SQLException e){
@@ -245,7 +245,7 @@ public class ProductosController implements Initializable {
                 resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE IdProducto = '"+getId(nomProE.getValue())+"'");
                 while (resultSet.next()){
                     idProE.setText(resultSet.getString("NomProd"));
-                    preProE.setText(resultSet.getString("ValorVenta"));
+                    preProE.setText("$"+resultSet.getString("ValorVenta"));
                     cantProE.setText(resultSet.getString("Existencia"));
                 }
             }catch (SQLException e){
@@ -269,25 +269,25 @@ public class ProductosController implements Initializable {
                 resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE IdProducto = '"+getId(nomProI.getValue())+"'");
                 while (resultSet.next()){
                     idProI.setText(resultSet.getString("NomProd"));
-                    preProI.setText(resultSet.getString("ValorVenta"));
+                    preProI.setText("$"+resultSet.getString("ValorVenta"));
                     cantProI.setText(resultSet.getString("Existencia"));
                 }
             }catch (SQLException e){
                 e.printStackTrace();
             }
         });
-        cantProA.setText(" ");
-        nomProA.setText(" ");
-        preProA.setText(" ");
+        cantProA.setText("");
+        nomProA.setText("");
+        preProA.setText("");
         idProM.setText(" ");
-        cantProM.setText(" ");
-        preProM.setText(" ");
-        idProE.setText(" ");
-        cantProE.setText(" ");
-        preProE.setText(" ");
-        idProI.setText(" ");
-        cantProI.setText(" ");
-        preProI.setText(" ");
+        cantProM.setText("");
+        preProM.setText("");
+        idProE.setText("");
+        cantProE.setText("");
+        preProE.setText("");
+        idProI.setText("");
+        cantProI.setText("");
+        preProI.setText("");
         //Tabla de consulta
         //proTable.getColumns().addAll(idProTable, nomProTable, costProTable, uniProTable);
         ObservableList<Producto> datosTablaPro = FXCollections.observableArrayList();
@@ -295,7 +295,7 @@ public class ProductosController implements Initializable {
             Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT * FROM Productos");
             while (resultSet.next()){
-                datosTablaPro.add(new Producto(resultSet.getString("IdProducto"), resultSet.getString("NomProd"), resultSet.getString("ValorVenta"), resultSet.getString("Existencia")));
+                datosTablaPro.add(new Producto(resultSet.getString("IdProducto"), resultSet.getString("NomProd"), "$"+resultSet.getString("ValorVenta"), resultSet.getString("Existencia")));
             }
         }catch (SQLException e){
             e.printStackTrace();
