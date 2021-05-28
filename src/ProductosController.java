@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.util.ResourceBundle;
+import java.util.WeakHashMap;
 
 public class ProductosController implements Initializable {
 
@@ -191,6 +192,18 @@ public class ProductosController implements Initializable {
     public void updates(){
         nomProE.getItems().clear();
         nomProM.getItems().clear();
+        nomProI.getItems().clear();
+        //IdAgregarProductos
+        try(Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT TOP 1 IdProducto FROM Productos ORDER BY IdProducto DESC ");
+            while (resultSet.next()){
+                int id = resultSet.getInt("IdProducto")+1;
+                idProA.setText(Integer.toString(id));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         //CargarCombobox
         try(Connection connection = DriverManager.getConnection(connectionUrl);
             Statement statement = connection.createStatement();){
@@ -272,6 +285,9 @@ public class ProductosController implements Initializable {
         idProE.setText(" ");
         cantProE.setText(" ");
         preProE.setText(" ");
+        idProI.setText(" ");
+        cantProI.setText(" ");
+        preProI.setText(" ");
         //Tabla de consulta
         //proTable.getColumns().addAll(idProTable, nomProTable, costProTable, uniProTable);
         ObservableList<Producto> datosTablaPro = FXCollections.observableArrayList();

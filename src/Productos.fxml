@@ -101,7 +101,6 @@
                     <NumberTextField fx:id="cantProA" prefHeight="28.0" prefWidth="320.0" promptText="Ingrese las unidades" GridPane.rowIndex="8" />
                     <Label prefHeight="30.0" prefWidth="504.0" GridPane.rowIndex="9" />
                     <Button fx:id="btnProA" mnemonicParsing="false" onMouseClicked="#agregarProductos" prefHeight="30.0" prefWidth="506.0" text="Agregar" GridPane.rowIndex="10" />
-
                 </children>
                 <columnConstraints>
                     <ColumnConstraints />
