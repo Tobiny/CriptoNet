@@ -178,7 +178,6 @@
                 <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
                 <Button fx:id="btnM" mnemonicParsing="false" onMouseClicked="#modificarCliente" prefHeight="32.0" prefWidth="437.0" text="Modificar" GridPane.rowIndex="14" />
             </GridPane>
-
         </Tab>
         <Tab text="Eliminar clientes">
             <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="700.0">
@@ -221,12 +220,12 @@
                 <Label prefHeight="57.0" prefWidth="320.0" text="Tipo de minero" GridPane.rowIndex="11" />
                 <ComboBox fx:id="tmE" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="12" />
                 <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
-                <Button fx:id="btnE" mnemonicParsing="false" onMouseClicked="#modificarCliente" prefHeight="32.0" prefWidth="437.0" text="Modificar" GridPane.rowIndex="14" />
+                <Button fx:id="btnE" mnemonicParsing="false" onMouseClicked="#eliminarCliente" prefHeight="32.0" prefWidth="437.0" text="Eliminar" GridPane.rowIndex="14" />
             </GridPane>
         </Tab>
         <Tab text="Consulta general">
             <Pane>
-                <TableView fx:id="proTable" prefHeight="673.0" prefWidth="1048.0">
+                <TableView fx:id="clienteTable" prefHeight="673.0" prefWidth="1048.0">
                     <columns>
                         <TableColumn fx:id="idCTable" prefWidth="137.0" text="Id de cliente" />
                         <TableColumn fx:id="idTTable" prefWidth="211.0" text="Empleado asignado" />
@@ -288,6 +287,5 @@
                 <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
             </GridPane>
         </Tab>
-
     </TabPane>
 </Pane>

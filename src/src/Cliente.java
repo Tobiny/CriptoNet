@@ -22,48 +22,34 @@ public class Cliente {
     public String getIdC() {
         return idC.get();
     }
-
     public void setIdC(String idC) {
         this.idC.set(idC);
     }
     public String getIdE() {
         return idE.get();
     }
-
-
     public void setIdE(String idE) {
         this.idE.set(idE);
     }
-
     public String getNom() {
         return nom.get();
     }
-
-
     public void setNom(String nom) {
         this.nom.set(nom);
     }
-
     public String getDom() {
         return dom.get();
     }
-
     public void setDom(String dom) {
         this.dom.set(dom);
     }
-
-    public String getRfc() {
-        return rfc.get();
-    }
-
+    public String getRfc() { return rfc.get(); }
     public void setRfc(String rfc) {
         this.rfc.set(rfc);
     }
-
     public String getTipoM() {
         return tipoM.get();
     }
-
     public void setTipoM(String tipoM) {
         this.tipoM.set(tipoM);
     }

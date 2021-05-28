@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.util.ResourceBundle;
+import java.util.WeakHashMap;
 
 public class ProductosController implements Initializable {
 
@@ -148,11 +149,11 @@ public class ProductosController implements Initializable {
         }else{
             JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
         }
-
     }
     //Modificar Productos
     public void modificarProductos (MouseEvent actionEvent) throws IOException{
-        String modSql = "UPDATE Productos SET ValorVenta = "+preProM.getText()+", Existencia = "+cantProM.getText()+" WHERE IdProducto = "+idProM.getText();
+        String modSql = "UPDATE Productos SET ValorVenta = "+preProM.getText()+", Existencia = "+cantProM.getText()+", NomProd = '"+idProM.getText()+"' WHERE IdProducto = "+getId(nomProM.getValue());
+        updates();
         if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este producto?", "Modificar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             if(c.ejecutarQuery(modSql)){
                 JOptionPane.showMessageDialog(null, "El producto ha sido modificado", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
@@ -162,9 +163,9 @@ public class ProductosController implements Initializable {
             }
         }else JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
     }
-
+    //Eliminar Productos
     public void eliminarProductos(MouseEvent actionEvent) throws IOException{
-        String delSql = "Delete Productos Where IdProducto = "+idProE.getText();
+        String delSql = "Delete Productos Where IdProducto = "+getId(nomProE.getValue());
         if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea eliminar este producto?", "Eliminar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             if(c.ejecutarQuery(delSql)){
                 JOptionPane.showMessageDialog(null, "El producto ha sido eliminado", "Eliminar productos", JOptionPane.INFORMATION_MESSAGE);
@@ -191,12 +192,24 @@ public class ProductosController implements Initializable {
     public void updates(){
         nomProE.getItems().clear();
         nomProM.getItems().clear();
+        nomProI.getItems().clear();
+        //IdAgregarProductos
+        try(Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT TOP 1 IdProducto FROM Productos ORDER BY IdProducto DESC ");
+            while (resultSet.next()){
+                int id = resultSet.getInt("IdProducto")+1;
+                idProA.setText(Integer.toString(id));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         //CargarCombobox
         try(Connection connection = DriverManager.getConnection(connectionUrl);
             Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT NomProd FROM Productos");
+            resultSet = statement.executeQuery("SELECT IdProducto, NomProd FROM Productos");
             while (resultSet.next()){
-                nomProM.getItems().addAll(resultSet.getString("NomProd"));
+                nomProM.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd"));
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -205,9 +218,9 @@ public class ProductosController implements Initializable {
         nomProM.setOnAction(event ->{
             try(Connection connection = DriverManager.getConnection(connectionUrl);
                 Statement statement = connection.createStatement();){
-                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE NomProd = '"+nomProM.getValue()+"'");
+                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE IdProducto = '"+getId(nomProM.getValue())+"'");
                 while (resultSet.next()){
-                    idProM.setText(resultSet.getString("IdProducto"));
+                    idProM.setText(resultSet.getString("NomProd"));
                     preProM.setText(resultSet.getString("ValorVenta"));
                     cantProM.setText(resultSet.getString("Existencia"));
                 }
@@ -218,9 +231,9 @@ public class ProductosController implements Initializable {
         //CargarComboboxE
         try(Connection connection = DriverManager.getConnection(connectionUrl);
             Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT NomProd FROM Productos");
+            resultSet = statement.executeQuery("SELECT IdProducto, NomProd FROM Productos");
             while (resultSet.next()){
-                nomProE.getItems().addAll(resultSet.getString("NomProd"));
+                nomProE.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd"));
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -229,9 +242,9 @@ public class ProductosController implements Initializable {
         nomProE.setOnAction(event ->{
             try(Connection connection = DriverManager.getConnection(connectionUrl);
                 Statement statement = connection.createStatement();){
-                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE NomProd = '"+nomProE.getValue()+"'");
+                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE IdProducto = '"+getId(nomProE.getValue())+"'");
                 while (resultSet.next()){
-                    idProE.setText(resultSet.getString("IdProducto"));
+                    idProE.setText(resultSet.getString("NomProd"));
                     preProE.setText(resultSet.getString("ValorVenta"));
                     cantProE.setText(resultSet.getString("Existencia"));
                 }
@@ -239,19 +252,42 @@ public class ProductosController implements Initializable {
                 e.printStackTrace();
             }
         });
-
-        cantProA.setText("");
-        nomProA.setText("");
-        preProA.setText("");
-
-        idProM.setText("");
-        cantProM.setText("");
-        preProM.setText("");
-
-        idProE.setText("");
-        cantProE.setText("");
-        preProE.setText("");
-
+        //CargarComboboxI
+        try(Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT IdProducto, NomProd FROM Productos");
+            while (resultSet.next()){
+                nomProI.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        //ComboDinamicaI
+        nomProI.setOnAction(event ->{
+            try(Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement();){
+                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE IdProducto = '"+getId(nomProI.getValue())+"'");
+                while (resultSet.next()){
+                    idProI.setText(resultSet.getString("NomProd"));
+                    preProI.setText(resultSet.getString("ValorVenta"));
+                    cantProI.setText(resultSet.getString("Existencia"));
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        });
+        cantProA.setText(" ");
+        nomProA.setText(" ");
+        preProA.setText(" ");
+        idProM.setText(" ");
+        cantProM.setText(" ");
+        preProM.setText(" ");
+        idProE.setText(" ");
+        cantProE.setText(" ");
+        preProE.setText(" ");
+        idProI.setText(" ");
+        cantProI.setText(" ");
+        preProI.setText(" ");
         //Tabla de consulta
         //proTable.getColumns().addAll(idProTable, nomProTable, costProTable, uniProTable);
         ObservableList<Producto> datosTablaPro = FXCollections.observableArrayList();
@@ -269,7 +305,13 @@ public class ProductosController implements Initializable {
         costProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("costo"));
         uniProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("unidad"));
         proTable.setItems(datosTablaPro);
-
-
+    }
+    public String getId(String textoEnCombo){
+        String idnull = "1";
+        if(textoEnCombo == null) return idnull;
+        else{
+            String[] parts = textoEnCombo.split("-" );
+            return parts[0];
+        }
     }
 }

@@ -10,10 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import src.Conexion;
-import src.DecimalField;
-import src.NumberTextField;
-import src.Producto;
+import src.*;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -61,20 +58,29 @@ public class ClientesController implements Initializable {
     public ComboBox<String> tmE;
     public ComboBox<String> idEE;
     public Button btnE;
-    //--------------------Menu consultar
-
-    public TableColumn<Producto, String> idCTable;
-    public TableColumn<Producto, String> idTTable;
-    public TableColumn<Producto, String> nomTable;
-    public TableColumn<Producto, String> domTable;
-    public TableColumn<Producto, String> rfcTable;
-    public TableColumn<Producto, String> tipoMTable;
-    public TableView<Producto> proTable;
+    //--------------------Menu modificar
+    @FXML
+    public ComboBox<String> idCC;
+    public TextField nomC;
+    public TextArea domC;
+    public TextField rfcC;
+    public ComboBox<String> tmC;
+    public ComboBox<String> idEC;
+    public Button btnC;
+    //--------------------Tabla
+    public TableColumn<Cliente, String> idCTable;
+    public TableColumn<Cliente, String> idTTable;
+    public TableColumn<Cliente, String> nomTable;
+    public TableColumn<Cliente, String> domTable;
+    public TableColumn<Cliente, String> rfcTable;
+    public TableColumn<Cliente, String> tipoMTable;
+    public TableView<Cliente> clienteTable;
 
     //Conexion
     static Conexion c = new Conexion();
     public static String connectionUrl = c.getConnectionUrl();
     public ResultSet resultSet;
+
     public void changeSceneP(MouseEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Productos.fxml"));
@@ -144,41 +150,39 @@ public class ClientesController implements Initializable {
 
     //Agregar Cliente
     public void agregarCliente(MouseEvent actionEvent) throws IOException {
-       /* String agregarSql = "INSERT INTO Productos VALUES ('"+nomProA.getText()+"', '"+preProA.getText()+" ',' "+cantProA.getText()+"');";
+        String agregarSql = "INSERT INTO Clientes VALUES ('"+nomA.getText()+"','"+domA.getText()+"', '"+rfcA.getText()+"', '"+getId(idEA.getValue())+"', '"+tmA.getValue()+"');";
         if (c.ejecutarQuery(agregarSql)){
-            JOptionPane.showMessageDialog(null, "El producto ha sido agregado", "Agregar productos", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El Cliente ha sido agregado", "Agregar productos", JOptionPane.INFORMATION_MESSAGE);
             updates();
         }else{
-            JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
-        }*/
-
+            JOptionPane.showMessageDialog(null, "El Cliente no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     //Modificar Cliente
-    public void modificarCliente (MouseEvent actionEvent) throws IOException{
-        /*String modSql = "UPDATE Productos SET ValorVenta = "+preProM.getText()+", Existencia = "+cantProM.getText()+" WHERE IdProducto = "+idProM.getText();
+    public void modificarCliente(MouseEvent actionEvent) throws IOException{
+        String agregarSql = "UPDATE Clientes Set NomCliente = '"+nomM.getText()+"', DomCliente = '"+domM.getText()+"', RFC_Cliente ='"+rfcM.getText()
+                +"', IdEmpleado = "+getId(idEM.getValue())+", TipoMinero = '"+tmM.getValue()+"' WHERE IdCliente ="+getId(idCM.getValue());
         if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este producto?", "Modificar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-            if(c.ejecutarQuery(modSql)){
-                JOptionPane.showMessageDialog(null, "El producto ha sido modificado", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+            if(c.ejecutarQuery(agregarSql)){
+                JOptionPane.showMessageDialog(null, "El Cliente ha sido modificado", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Cliente no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);*/
+        }else JOptionPane.showMessageDialog(null, "El Cliente no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
     }
-    //Modificar Cliente
-    public void eliminarClientes(MouseEvent actionEvent) throws IOException{
-       /* String delSql = "Delete Productos Where IdProducto = "+idProE.getText();
+    //Eliminar Cliente
+    public void eliminarCliente(MouseEvent actionEvent) throws IOException{
+       String delSql = "Delete Clientes WHERE IdCliente ="+getId(idCE.getValue());
         if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea eliminar este producto?", "Eliminar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             if(c.ejecutarQuery(delSql)){
-                JOptionPane.showMessageDialog(null, "El producto ha sido eliminado", "Eliminar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Cliente ha sido eliminado", "Eliminar productos", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El producto no fue eliminado", "Eliminar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Cliente no fue eliminado", "Eliminar productos", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El producto no fue eliminado", "Eliminar productos", JOptionPane.INFORMATION_MESSAGE);*/
+        }else JOptionPane.showMessageDialog(null, "El Cliente no fue eliminado", "Eliminar productos", JOptionPane.INFORMATION_MESSAGE);
     }
-
-
     public void exit(MouseEvent actionEvent) throws IOException { System.exit(0); }
     public void showLogo(MouseEvent actionEvent) {
         this.logoLblH.setVisible(true);
@@ -186,94 +190,157 @@ public class ClientesController implements Initializable {
     public void hideLogo(MouseEvent actionEvent) {
         this.logoLblH.setVisible(false);
     }
-
-    //@Override
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         domA.setWrapText(true);
-        //updates();
+        updates();
     }
-   /* public void updates(){
-        nomProE.getItems().clear();
-        nomProM.getItems().clear();
-        //CargarCombobox
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT NomProd FROM Productos");
-            while (resultSet.next()){
-                nomProM.getItems().addAll(resultSet.getString("NomProd"));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        //ComboDinamica
-        nomProM.setOnAction(event ->{
-            try(Connection connection = DriverManager.getConnection(connectionUrl);
-                Statement statement = connection.createStatement();){
-                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE NomProd = '"+nomProM.getValue()+"'");
-                while (resultSet.next()){
-                    idProM.setText(resultSet.getString("IdProducto"));
-                    preProM.setText(resultSet.getString("ValorVenta"));
-                    cantProM.setText(resultSet.getString("Existencia"));
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        });
-        //CargarComboboxE
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT NomProd FROM Productos");
-            while (resultSet.next()){
-                nomProE.getItems().addAll(resultSet.getString("NomProd"));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        //ComboDinamicaE
-        nomProE.setOnAction(event ->{
-            try(Connection connection = DriverManager.getConnection(connectionUrl);
-                Statement statement = connection.createStatement();){
-                resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE NomProd = '"+nomProE.getValue()+"'");
-                while (resultSet.next()){
-                    idProE.setText(resultSet.getString("IdProducto"));
-                    preProE.setText(resultSet.getString("ValorVenta"));
-                    cantProE.setText(resultSet.getString("Existencia"));
-                }
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        });
+    //Get id de un combobox
+   public String getId(String textoEnCombo){
+       String idnull = "1";
+       if(textoEnCombo == null) return idnull;
+       else{
+           String[] parts = textoEnCombo.split("-" );
+           return parts[0];
+       }
+   }
+   //Updates
+   public void updates(){
+       idCE.getItems().clear();
+       idCC.getItems().clear();
+       idCM.getItems().clear();
+       idEA.getItems().clear();
+       tmA.getItems().clear();
+       tmM.getItems().clear();
+       tmE.getItems().clear();
+       tmC.getItems().clear();
+       //IdAgregarProductos
+       try(Connection connection = DriverManager.getConnection(connectionUrl);
+           Statement statement = connection.createStatement();){
+           resultSet = statement.executeQuery("SELECT TOP 1 IdCliente FROM Clientes ORDER BY IdCliente DESC");
+           while (resultSet.next()){
+               int id = resultSet.getInt("IdCliente")+1;
+               idCA.setText(Integer.toString(id));
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
+       String[] tipoMinero = {"Eth","SHA","ZC", "N/A"};
+       //Cargar Combobox de Algos
+       for(int x = 0; x < tipoMinero.length; x++){
+           tmA.getItems().add(tipoMinero[x]);
+           tmM.getItems().add(tipoMinero[x]);
+           tmE.getItems().add(tipoMinero[x]);
+           tmC.getItems().add(tipoMinero[x]);
+       }
+       //Cargar Combobox de Empleados
+       try(Connection connection = DriverManager.getConnection(connectionUrl);
+           Statement statement = connection.createStatement();){
+           resultSet = statement.executeQuery("SELECT IdEmpleado, NomEmpleado FROM Empleados");
+           while (resultSet.next()){
+               idEA.getItems().addAll(resultSet.getString("IdEmpleado")+"- "+resultSet.getString("NomEmpleado"));
+               idEM.getItems().addAll(resultSet.getString("IdEmpleado")+"- "+resultSet.getString("NomEmpleado"));
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
+       //CargarComboboxM
+       try(Connection connection = DriverManager.getConnection(connectionUrl);
+           Statement statement = connection.createStatement();){
+           resultSet = statement.executeQuery("SELECT IdCliente, NomCliente FROM Clientes");
+           while (resultSet.next()){
+               idCM.getItems().addAll(resultSet.getString("IdCliente")+"- "+resultSet.getString("NomCliente"));
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
+       //ComboDinamicaM
+       idCM.setOnAction(event ->{
+           try(Connection connection = DriverManager.getConnection(connectionUrl);
+               Statement statement = connection.createStatement();){
+               resultSet = statement.executeQuery("SELECT * FROM  Clientes WHERE IdCliente = '"+getId(idCM.getValue())+"'");
+               while (resultSet.next()){
+                   idEM.setValue(resultSet.getString("IdEmpleado"));
+                   nomM.setText(resultSet.getString("NomCliente"));
+                   domM.setText(resultSet.getString("DomCliente"));
+                   rfcM.setText(resultSet.getString("RFC_Cliente"));
+                   tmM.setValue(resultSet.getString("TipoMinero"));
+               }
+           }catch (SQLException e){
+               e.printStackTrace();
+           }
+       });
+       //CargarComboboxE
+       try(Connection connection = DriverManager.getConnection(connectionUrl);
+           Statement statement = connection.createStatement();){
+           resultSet = statement.executeQuery("SELECT IdCliente, NomCliente FROM Clientes");
+           while (resultSet.next()){
+               idCE.getItems().addAll(resultSet.getString("IdCliente")+"- "+resultSet.getString("NomCliente"));
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
+       //ComboDinamicaE
+       idCE.setOnAction(event ->{
+           try(Connection connection = DriverManager.getConnection(connectionUrl);
+               Statement statement = connection.createStatement();){
+               resultSet = statement.executeQuery("SELECT * FROM  Clientes WHERE IdCliente = '"+getId(idCE.getValue())+"'");
+               while (resultSet.next()){
+                   idEE.setValue(resultSet.getString("IdEmpleado"));
+                   nomE.setText(resultSet.getString("NomCliente"));
+                   domE.setText(resultSet.getString("DomCliente"));
+                   rfcE.setText(resultSet.getString("RFC_Cliente"));
+                   tmE.setValue(resultSet.getString("TipoMinero"));
+               }
+           }catch (SQLException e){
+               e.printStackTrace();
+           }
+       });
+       //CargarComboboxC
+       try(Connection connection = DriverManager.getConnection(connectionUrl);
+           Statement statement = connection.createStatement();){
+           resultSet = statement.executeQuery("SELECT IdCliente, NomCliente FROM Clientes");
+           while (resultSet.next()){
+               idCC.getItems().addAll(resultSet.getString("IdCliente")+"- "+resultSet.getString("NomCliente"));
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
+       //ComboDinamicaC
+       idCC.setOnAction(event ->{
+           try(Connection connection = DriverManager.getConnection(connectionUrl);
+               Statement statement = connection.createStatement();){
+               resultSet = statement.executeQuery("SELECT * FROM  Clientes WHERE IdCliente = '"+getId(idCC.getValue())+"'");
+               while (resultSet.next()){
+                   idEC.setValue(resultSet.getString("IdEmpleado"));
+                   nomC.setText(resultSet.getString("NomCliente"));
+                   domC.setText(resultSet.getString("DomCliente"));
+                   rfcC.setText(resultSet.getString("RFC_Cliente"));
+                   tmC.setValue(resultSet.getString("TipoMinero"));
+               }
+           }catch (SQLException e){
+               e.printStackTrace();
+           }
+       });
 
-        cantProA.setText("");
-        nomProA.setText("");
-        preProA.setText("");
-
-        idProM.setText("");
-        cantProM.setText("");
-        preProM.setText("");
-
-        idProE.setText("");
-        cantProE.setText("");
-        preProE.setText("");
-
-        //Tabla de consulta --- esto si quieres yo lo hago
-        //proTable.getColumns().addAll(idProTable, nomProTable, costProTable, uniProTable);
-        ObservableList<Producto> datosTablaPro = FXCollections.observableArrayList();
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT * FROM Productos");
-            while (resultSet.next()){
-                datosTablaPro.add(new Cliente(id cliente, id empleado, nombre cliente, domicio, rfc, tipo minero));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        idProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("id"));
-        nomProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("nom"));
-        costProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("costo"));
-        uniProTable.setCellValueFactory(new PropertyValueFactory<Producto, String>("unidad"));
-        proTable.setItems(datosTablaPro);
-
-
-    }*/
+       //Tabla de consulta
+       //proTable.getColumns().addAll(idProTable, nomProTable, costProTable, uniProTable);
+       ObservableList<Cliente> datosTablaPro = FXCollections.observableArrayList();
+       try(Connection connection = DriverManager.getConnection(connectionUrl);
+           Statement statement = connection.createStatement();){
+           resultSet = statement.executeQuery("SELECT * FROM Clientes");
+           while (resultSet.next()){
+               datosTablaPro.add(new Cliente(resultSet.getString("IdCliente"), resultSet.getString("IdEmpleado"), resultSet.getString("NomCliente"), resultSet.getString("DomCliente"), resultSet.getString("RFC_Cliente"), resultSet.getString("TipoMinero")));
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
+       idCTable.setCellValueFactory(new PropertyValueFactory<Cliente, String>("idC"));
+       idTTable.setCellValueFactory(new PropertyValueFactory<Cliente, String>("idE"));
+       nomTable.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nom"));
+       domTable.setCellValueFactory(new PropertyValueFactory<Cliente, String>("dom"));
+       rfcTable.setCellValueFactory(new PropertyValueFactory<Cliente, String>("rfc"));
+       tipoMTable.setCellValueFactory(new PropertyValueFactory<Cliente, String>("tipoM"));
+       clienteTable.setItems(datosTablaPro);
+   }
 }
