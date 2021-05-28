@@ -15,6 +15,7 @@ public class Cliente {
         this.idE = new SimpleStringProperty(idE);
         this.nom = new SimpleStringProperty(nom);
         this.dom = new SimpleStringProperty(dom);
+        this.rfc = new SimpleStringProperty(rfc);
         this.tipoM = new SimpleStringProperty(tipoM);
     }
 

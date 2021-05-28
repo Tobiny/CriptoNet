@@ -3,9 +3,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import src.DecimalField;
+import src.NumberTextField;
+import src.Producto;
+import src.Venta;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +26,48 @@ public class VentasController implements Initializable {
 
     public Label logoLblH;
     public Label logoLbl;
+
+
+    //Menu agregar venta
+    public TextField idVA; //Id de la venta
+    public ComboBox<String> idCA; //Id de el cliente
+    public DatePicker fechaA; //Fecha de la venta
+    public ComboBox<String> idPA; // Id de el producto para venta
+    public NumberTextField cantA; // Cantidad de productos para venta
+    public DecimalField subTA; // Subtotal del producto de arriba
+    public DecimalField totA; //Total calculado
+    public Button btnAV; //Botón agregar venta
+    public Button btnAP; //Botón agregar producto
+    public Button btnC; //Botón cancelar venta
+
+    //Menu eliminar venta
+    public ComboBox<String> idVE; //Id de la venta
+    public TextField idEC; //Id de el cliente
+    public DatePicker fechaE; //Fecha de la venta
+    public ComboBox<String> idPE; // Id de el producto para venta
+    public NumberTextField cantPE; // Cantidad de productos para venta
+    public DecimalField subTE; // Subtotal del producto de arriba
+    public DecimalField totE; //Total calculado
+    public Button btnEV; //Botón eliminar venta
+
+    //Menu Consulta general (Tablas)
+    public TableColumn<Venta, String> idVenta;
+    public TableColumn<Venta, String> idCliente;
+    public TableColumn<Venta, String> fecha;
+    public TableColumn<Venta, String> idProducto;
+    public TableColumn<Venta, String> cantidaPro;
+    public TableColumn<Venta, String> subtotal;
+    public TableColumn<Venta, String> total;
+    public TableView<Producto> ventasTable;
+
+    //Menu consulta individual
+    public ComboBox<String> idVC; //Id de la venta
+    public TextField idCC; //Id de el cliente
+    public DatePicker fechaC; //Fecha de la venta
+    public ComboBox<String> idPC; // Id de el producto para venta
+    public NumberTextField cantPC; // Cantidad de productos para venta
+    public DecimalField subTC; // Subtotal del producto de arriba
+    public DecimalField totC; //Total calculado
 
 
     public void changeSceneP(MouseEvent actionEvent) throws IOException {
@@ -94,6 +140,12 @@ public class VentasController implements Initializable {
         app_stage.setScene(home_scene);
         app_stage.show();
     }
+
+    public void eliminarVenta(MouseEvent actionEvent) throws IOException { }
+    public void agregarVenta(MouseEvent actionEvent) throws IOException { }
+    public void cancelarVenta(MouseEvent actionEvent) throws IOException { }
+    public void agregarProducto(MouseEvent actionEvent) throws IOException { }
+
 
     public void exit(MouseEvent actionEvent) throws IOException { System.exit(0); }
     public void showLogo(MouseEvent actionEvent) {

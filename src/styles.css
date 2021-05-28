@@ -156,7 +156,7 @@
     -fx-scale-x: 1.05;
 }
 
-.pane_w_form > .button {
+.pane_w_form > .button  {
     -fx-background-color: #57b846;
     -fx-background-radius: 25;
     -fx-border-radius: 25;
@@ -164,6 +164,10 @@
     -fx-font-size: 15;
     -fx-font-family: "Montserrat Bold";
     -fx-cursor: hand;
+}
+.pane_w_form > .separator .line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 10 0 0;
 }
 .pane_w_form > .button:hover {
     -fx-background-color: black;
