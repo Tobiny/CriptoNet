@@ -3,10 +3,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import src.DecimalField;
+import src.Servicio;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +26,34 @@ public class ServiciosController implements Initializable {
     public Label logoLblH;
     public Label logoLbl;
 
+    //Menú agregar
+    public TextField idServA;
+    public TextField nomServA;
+    public DecimalField preServA;
+    public Button btnServA;
+
+    //Menú modificar
+    public ComboBox<String> idServM;
+    public TextField nomServM;
+    public DecimalField preServM;
+    public Button btnServM;
+
+    //Menú eliminar
+    public ComboBox<String> idServE;
+    public TextField nomServE;
+    public TextField preServE;
+    public Button btnServE;
+
+    //Menu consulta general
+    public TableView<Servicio> servTable;
+    public TableColumn<Servicio, String> idSerTable;
+    public TableColumn<Servicio, String> nomSerTable;
+    public TableColumn<Servicio, String> preSerTable;
+
+    //Menu consulta idividual
+    public ComboBox<String> idServI;
+    public TextField nomServI;
+    public TextField preServI;
 
     public void changeSceneP(MouseEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -94,6 +125,9 @@ public class ServiciosController implements Initializable {
         app_stage.setScene(home_scene);
         app_stage.show();
     }
+    public void agregarServicio(){}
+    public void modificarServicio(){}
+    public void eliminarServicio(){}
 
     public void exit(MouseEvent actionEvent) throws IOException { System.exit(0); }
     public void showLogo(MouseEvent actionEvent) {
