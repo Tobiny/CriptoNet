@@ -206,8 +206,8 @@
                     <String fx:value="tab_pane_content" />
                     <String fx:value="pane_w_form" />
                 </styleClass>
-                <Label prefHeight="17.0" prefWidth="297.0" text="Nombre de el Empleado" />
-                <ComboBox fx:id="idEmpE" prefHeight="28.0" prefWidth="505.0" promptText="Seleccione un Empleado" GridPane.rowIndex="1" />
+                <Label prefHeight="17.0" prefWidth="297.0" text="Id de el Empleado" />
+                <ComboBox fx:id="idEmpI" prefHeight="28.0" prefWidth="505.0" promptText="Seleccione un Empleado" GridPane.rowIndex="1" />
                 <Label prefHeight="15.0" prefWidth="297.0" text="Nombre de el Empleado" GridPane.rowIndex="3" />
                 <TextField fx:id="nomEmpI" editable="false" GridPane.rowIndex="4" />
                 <Label prefHeight="30.0" prefWidth="504.0" GridPane.rowIndex="9" />

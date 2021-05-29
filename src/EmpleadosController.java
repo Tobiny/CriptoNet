@@ -30,8 +30,12 @@ public class EmpleadosController implements Initializable {
     public ComboBox<String> idEmpM;
     public TextField nomEmpM;
 
-    public ComboBox<String> nomEmpE;
-    public TextField idEmpE;
+    public ComboBox<String> idEmpE;
+    public TextField nomEmpE;
+
+
+    public ComboBox<String> idEmpI;
+    public TextField nomEmpI;
 
     public Button btnEmpA;
     public Button btnEmpM;
