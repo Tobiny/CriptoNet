@@ -126,7 +126,7 @@
                 <opaqueInsets>
                 </opaqueInsets>
                 <Label prefHeight="33.0" prefWidth="660.0" text="Id de la Venta" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <TextField fx:id="idVA" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="idVA" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <ComboBox fx:id="idCA" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -137,9 +137,9 @@
                 <Label prefHeight="57.0" prefWidth="660.0" text="Cantidad de Productos" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                 <NumberTextField fx:id="cantA" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" promptText="Ingrese la cantidad" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                 <Label prefHeight="57.0" prefWidth="660.0" text="Subtotal" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                <DecimalField fx:id="subTA" editable="false" prefHeight="28.0" promptText="Calculado" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                <DecimalField fx:id="subTA" editable="false" prefHeight="28.0" promptText="Seleccione un producto primero" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                 <Label prefHeight="57.0" prefWidth="660.0" text="Total" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                <DecimalField fx:id="totA" editable="false" prefHeight="28.0" promptText="Calculado" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                <DecimalField fx:id="totA" editable="false" prefHeight="28.0" promptText="Agregue un producto" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                 <Label prefHeight="30.0" prefWidth="660" GridPane.columnIndex="1" GridPane.rowIndex="15" />
                 <GridPane minWidth="500" prefWidth="660" styleClass="pane_w_form" GridPane.columnIndex="1" GridPane.rowIndex="16" GridPane.valignment="CENTER">
                     <columnConstraints>
@@ -151,7 +151,7 @@
                   <GridPane.margin>
                      <Insets right="5.0" />
                   </GridPane.margin></Button>
-                    <Button fx:id="btnAP" mnemonicParsing="false" onMouseClicked="#agregarProducto" prefHeight="32.0" prefWidth="220.0" text="Agregar otro producto" GridPane.columnIndex="1">
+                    <Button fx:id="btnAP" mnemonicParsing="false" onMouseClicked="#agregarProducto" prefHeight="32.0" prefWidth="220.0" text="Agregar producto" GridPane.columnIndex="1">
                   <GridPane.margin>
                      <Insets left="5.0" right="5.0" />
                   </GridPane.margin></Button>
