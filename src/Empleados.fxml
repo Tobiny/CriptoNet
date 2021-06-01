@@ -114,8 +114,7 @@
                     <Insets/>
                 </opaqueInsets>
                 <Label prefHeight="35.0" prefWidth="320.0" text="Id de el Empleado" GridPane.rowIndex="1"/>
-                <TextField fx:id="idEmpA" disable="true" editable="false" prefHeight="28.0" prefWidth="320.0"
-                           promptText="1" GridPane.rowIndex="2"/>
+                <TextField fx:id="idEmpA" disable="true" editable="false" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="2"/>
                 <Label prefHeight="35.0" prefWidth="320.0" text="Nombre de el Empleado" GridPane.rowIndex="3"/>
                 <TextField fx:id="nomEmpA" prefHeight="28.0" prefWidth="320.0" promptText="Ejemplo: María José"
                            GridPane.rowIndex="4"/>
@@ -149,7 +148,7 @@
                 <Button fx:id="btnEmpM" mnemonicParsing="false" onMouseClicked="#modificarEmpleado" prefHeight="30.0" prefWidth="504.0" text="Modificar" GridPane.rowIndex="10" />
             </GridPane>
         </Tab>
-        <Tab text="Eliminar productos">
+        <Tab text="Eliminar empleados">
             <GridPane alignment="CENTER" prefHeight="400.0" prefWidth="700.0">
                 <columnConstraints>
                     <ColumnConstraints />
@@ -175,7 +174,7 @@
                 <Button fx:id="btnEmpE" mnemonicParsing="false" onMouseClicked="#eliminarEmpleado" prefHeight="30.0" prefWidth="506.0" text="Eliminar" GridPane.rowIndex="10" />
             </GridPane>
         </Tab>
-        <Tab text="Consultar productos">
+        <Tab text="Consultar empleados">
             <Pane>
                 <TableView fx:id="empTable" editable="true" layoutX="3.0" layoutY="-4.0" prefHeight="677.0" prefWidth="1048.0">
                     <columns>
@@ -199,7 +198,6 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                     <RowConstraints />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
-
                     <RowConstraints />
                 </rowConstraints>
                 <styleClass>
