@@ -142,7 +142,7 @@ public class ProductosController implements Initializable {
 
     //Agregar Productos
    public void agregarProductos(MouseEvent actionEvent) throws IOException {
-        String agregarSql = "INSERT INTO Productos VALUES ('"+nomProA.getText()+"', '"+preProA.getText()+" ',' "+cantProA.getText()+"');";
+        String agregarSql = "INSERT INTO Productos VALUES ('"+nomProA.getText()+"', '"+preProA.getText()+"','"+cantProA.getText()+"');";
         if (c.ejecutarQuery(agregarSql)){
             JOptionPane.showMessageDialog(null, "El producto ha sido agregado", "Agregar productos", JOptionPane.INFORMATION_MESSAGE);
             updates();

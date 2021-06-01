@@ -147,7 +147,6 @@ public class ClientesController implements Initializable {
         app_stage.setScene(home_scene);
         app_stage.show();
     }
-
     //Agregar Cliente
     public void agregarCliente(MouseEvent actionEvent) throws IOException {
         String agregarSql = "INSERT INTO Clientes VALUES ('"+nomA.getText()+"','"+domA.getText()+"', '"+rfcA.getText()+"', '"+getId(idEA.getValue())+"', '"+tmA.getValue()+"');";
