@@ -136,11 +136,11 @@
                 <opaqueInsets>
                 </opaqueInsets>
                 <Label prefHeight="33.0" prefWidth="660.0" text="Id de el Mantenimiento" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <TextField fx:id="idMA" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="idMA" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0"  GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <ComboBox fx:id="idCA" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <DatePicker fx:id="fechaA" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <DatePicker fx:id="fechaAM" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Observaciones" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <TextArea fx:id="idPA" prefHeight="80.0" prefWidth="660.0" promptText="Ingrese las observaciones" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                 <Separator style="-fx-border-color: gray" GridPane.columnIndex="1" GridPane.rowIndex="8" />
@@ -219,13 +219,13 @@
                 <opaqueInsets>
                 </opaqueInsets>
                 <Label prefHeight="33.0" prefWidth="660.0" text="Id de el Mantenimiento" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <ComboBox fx:id="idMM"  maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ComboBox fx:id="idMM"  maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <ComboBox fx:id="idCM" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <DatePicker fx:id="fechaM" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Observaciones" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                <TextArea fx:id="idPM" prefHeight="80.0" prefWidth="660.0" promptText="Ingrese las observaciones" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <TextArea fx:id="idPM" prefHeight="80.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                 <Separator style="-fx-border-color: gray" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                 <Label prefHeight="57.0" prefWidth="660.0" text="Id de el Servicio" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                 <ComboBox fx:id="idSerM" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
@@ -297,7 +297,7 @@
                 <opaqueInsets>
                 </opaqueInsets>
                 <Label prefHeight="33.0" prefWidth="660.0" text="Id de el Mantenimiento" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <ComboBox fx:id="idME" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ComboBox fx:id="idME" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <TextField fx:id="idCE" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -318,9 +318,8 @@
                     <columnConstraints>
                         <ColumnConstraints />
                   <ColumnConstraints />
-   
                     </columnConstraints>
-                    <Button fx:id="btnEM" mnemonicParsing="false" onMouseClicked="#agregarServicio" prefHeight="32.0" prefWidth="686.0" style="-fx-font-size: 13" text="Agregar otro servicio" GridPane.columnIndex="1">
+                    <Button fx:id="btnEM" mnemonicParsing="false" onMouseClicked="#eliminarMantenimiento" prefHeight="32.0" prefWidth="686.0" style="-fx-font-size: 13" text="Eliminar Mantenimiento" GridPane.columnIndex="1">
                         <GridPane.margin>
                             <Insets left="5.0" right="5.0" />
                         </GridPane.margin></Button>
@@ -339,16 +338,32 @@
         </Tab>
         <Tab text="Consulta general">
             <Pane>
-                <TableView fx:id="ventasTable" prefHeight="673.0" prefWidth="1048.0">
+                <TableView fx:id="mantTable" prefHeight="673.0" prefWidth="1048.0">
                     <columns>
                         <TableColumn fx:id="idMant" prefWidth="137.0" text="Id Mant." />
                         <TableColumn fx:id="idCli" prefWidth="211.0" text="Id Cliente" />
+                        <TableColumn fx:id="obsev" prefWidth="234.0" text="Observaciones." />
                         <TableColumn fx:id="fecha" prefWidth="234.0" text="Fecha Mant." />
-                        <TableColumn fx:id="mant" prefWidth="234.0" text="Mantenimiento." />
-                        <TableColumn fx:id="idServ" prefWidth="181.0" text="Id Servicio" />
-                        <TableColumn fx:id="cantidadServ" prefWidth="168.0" text="Cantidad" />
-                        <TableColumn fx:id="subtotal" prefWidth="195.0" text="Subtotal" />
                         <TableColumn fx:id="total" prefWidth="195.0" text="Total" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <styleClass>
+                    <String fx:value="tab_pane_content" />
+                    <String fx:value="pane_w_form" />
+                </styleClass>
+            </Pane>
+        </Tab>
+        <Tab text="Consulta detalles">
+            <Pane>
+                <TableView fx:id="detalleMantTable" prefHeight="673.0" prefWidth="1048.0">
+                    <columns>
+                        <TableColumn fx:id="didMant" prefWidth="137.0" text="Id Mant." />
+                        <TableColumn fx:id="didServ" prefWidth="211.0" text="Id Servicio" />
+                        <TableColumn fx:id="cantidadServ" prefWidth="234.0" text="Cantidad." />
+                        <TableColumn fx:id="subtotal" prefWidth="234.0" text="Subtotal." />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -396,7 +411,7 @@
                 <opaqueInsets>
                 </opaqueInsets>
                 <Label prefHeight="33.0" prefWidth="660.0" text="Id de el Mantenimiento" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <ComboBox fx:id="idMI" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ComboBox fx:id="idMI" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <TextField fx:id="idCI" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
