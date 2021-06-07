@@ -182,10 +182,10 @@ public class MantenimientoController implements Initializable {
                     JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido agregado", "Mantenimiento exitoso", JOptionPane.INFORMATION_MESSAGE);
                     updates();
                 }else{
-                    JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El Mantenimiento no ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
                 }
                 servicios.clear();
-            }else JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
+            }else JOptionPane.showMessageDialog(null, "El Mantenimiento no ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -204,6 +204,12 @@ public class MantenimientoController implements Initializable {
         totalTA = 0;
         subtotalTA = 0;
         servicios.clear();
+        //Clerear textboxes
+        idCA.setValue(" ");
+        idPA.setText(" ");
+        idSerA.setValue(" ");
+        subTA.setText(" ");
+        totA.setText(" ");
     }
     public void modificarServicio(){
         totalTA = 0;
