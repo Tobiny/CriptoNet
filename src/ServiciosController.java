@@ -15,7 +15,6 @@ import src.Empleado;
 import src.Servicio;
 
 import javax.swing.*;
-import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -148,9 +147,9 @@ public class ServiciosController implements Initializable {
                 JOptionPane.showMessageDialog(null, "El Servicio ha sido modificado", "Modificar Servicios", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El Servicio ha sido modificado", "Modificar Servicio", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Servicio no ha sido modificado", "Modificar Servicio", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El Servicio ha sido modificado", "Modificar Servicio", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El Servicio no ha sido modificado", "Modificar Servicio", JOptionPane.INFORMATION_MESSAGE);
     }
     public void eliminarServicio(){
         String agregarSql = "DELETE FROM Servicios WHERE IdServicio = "+getId(idServE.getValue());
@@ -159,9 +158,9 @@ public class ServiciosController implements Initializable {
                 JOptionPane.showMessageDialog(null, "El servicio ha sido eliminado", "Eliminar servicio", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El servicio ha sido eliminado", "Eliminar servicio", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El servicio no ha sido eliminado", "Eliminar servicio", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El servicio ha sido eliminado", "Eliminar servicio", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El servicio no ha sido eliminado", "Eliminar servicio", JOptionPane.INFORMATION_MESSAGE);
     }
     public void exit(MouseEvent actionEvent) throws IOException { System.exit(0); }
     public void showLogo(MouseEvent actionEvent) {

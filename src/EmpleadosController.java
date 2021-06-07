@@ -139,9 +139,9 @@ public class EmpleadosController implements Initializable {
                 JOptionPane.showMessageDialog(null, "El empleado ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El empleado ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El empleado no ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El empleado ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El empleado no ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
     }
     public void eliminarEmpleado(MouseEvent actionEvent) throws IOException {
         String agregarSql = "DELETE FROM Empleados WHERE IdEmpleado = "+getId(idEmpE.getValue());
@@ -150,9 +150,9 @@ public class EmpleadosController implements Initializable {
                 JOptionPane.showMessageDialog(null, "El empleado ha sido eliminado", "Eliminar empleados", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El empleado ha sido eliminado", "Eliminar empleados", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El empleado no ha sido eliminado", "Eliminar empleados", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El empleado ha sido eliminado", "Eliminar empleados", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El empleado no ha sido eliminado", "Eliminar empleados", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void exit(MouseEvent actionEvent) throws IOException { System.exit(0); }

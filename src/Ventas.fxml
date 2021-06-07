@@ -322,7 +322,7 @@
                 <opaqueInsets>
                 </opaqueInsets>
                 <Label prefHeight="33.0" prefWidth="660.0" text="Id de la Venta" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <ComboBox fx:id="idVC" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ComboBox fx:id="idVC" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <TextField fx:id="idCC" editable="false" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />

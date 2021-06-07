@@ -161,14 +161,14 @@ public class ClientesController implements Initializable {
     public void modificarCliente(MouseEvent actionEvent) throws IOException{
         String agregarSql = "UPDATE Clientes Set NomCliente = '"+nomM.getText()+"', DomCliente = '"+domM.getText()+"', RFC_Cliente ='"+rfcM.getText()
                 +"', IdEmpleado = "+getId(idEM.getValue())+", TipoMinero = '"+tmM.getValue()+"' WHERE IdCliente ="+getId(idCM.getValue());
-        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este producto?", "Modificar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este cliente?", "Modificar clientes - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             if(c.ejecutarQuery(agregarSql)){
-                JOptionPane.showMessageDialog(null, "El Cliente ha sido modificado", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Cliente ha sido modificado", "Modificar clientes", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El Cliente no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Cliente no sufrio modificaciones", "Modificar clientes", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El Cliente no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El Cliente no sufrio modificaciones", "Modificar clientes", JOptionPane.INFORMATION_MESSAGE);
     }
     //Eliminar Cliente
     public void eliminarCliente(MouseEvent actionEvent) throws IOException{

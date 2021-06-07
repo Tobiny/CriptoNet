@@ -10,7 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import src.*;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +29,6 @@ public class VentasController implements Initializable {
 
     public Label logoLblH;
     public Label logoLbl;
-
 
     //Menu agregar venta
     public TextField idVA; //Id de la venta
@@ -85,6 +83,7 @@ public class VentasController implements Initializable {
     double subtotalTA = 0;
     double totalTA = 0;
     public ArrayList<String> productos = new ArrayList<String>();
+
     public void changeSceneP(MouseEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Productos.fxml"));
@@ -154,7 +153,7 @@ public class VentasController implements Initializable {
     public void eliminarVenta(MouseEvent actionEvent) throws IOException {
         String delSql = "Delete Ventas WHERE IdVenta ="+idVE.getValue()+";\n"+
                         "Delete DetalleVentas Where DetalleVentas.IdVenta =  "+idVE.getValue();
-        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea eliminar esta venta?", "Eliminar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea eliminar esta venta?", "Eliminar venta - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             if(c.ejecutarQuery(delSql)){
                 JOptionPane.showMessageDialog(null, "la venta ha sido eliminada", "Eliminar Ventas", JOptionPane.INFORMATION_MESSAGE);
                 updates();
@@ -193,7 +192,6 @@ public class VentasController implements Initializable {
         totA.setText(" ");
     }
     public void agregarProducto(MouseEvent actionEvent) throws IOException {
-
         //Ver existencia de producto
         int ex = 0;
         try(Connection connection = DriverManager.getConnection(connectionUrl);
@@ -239,8 +237,7 @@ public class VentasController implements Initializable {
         //Set list null
         productos.clear();
         //CargarCombobox ind
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT IdVenta FROM Ventas");
             while (resultSet.next()){
                 idVC.getItems().addAll(resultSet.getString("IdVenta"));
@@ -250,6 +247,10 @@ public class VentasController implements Initializable {
         }
         //Comboboxdinamica individual
         idVC.setOnAction(event ->{
+            idPC.getItems().clear();
+            cantPC.setText(" ");
+            subTC.setText(" ");
+            totC.setText(" ");
             try(Connection connection = DriverManager.getConnection(connectionUrl);
                 Statement statement = connection.createStatement();){
                 resultSet = statement.executeQuery("SELECT * FROM  Ventas WHERE IdVenta = '"+idVC.getValue()+"'");
@@ -261,50 +262,37 @@ public class VentasController implements Initializable {
             }catch (SQLException e){
                 e.printStackTrace();
             }
+            try(Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement()){
+                //Llenar datos del mantenimiento
+                resultSet = statement.executeQuery("SELECT DetalleVentas.IdProducto, NomProd FROM  DetalleVentas, Productos  WHERE IdVenta = "+getId(idVC.getValue())+" AND DetalleVentas.IdProducto = Productos.IdProducto ORDER BY DetalleVentas.IdProducto ASC ");
+                while (resultSet.next()){
+                    idPC.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd"));
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
         });
-        //IdAgregar
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT TOP 1 IdVenta FROM Ventas ORDER BY IdVenta DESC");
-            if(resultSet.next()){
-                int id = resultSet.getInt("IdVenta")+1;
-                idVA.setText(Integer.toString(id));
-            }else idVA.setText("1");
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        //CargarComboboxCA
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT IdCliente, NomCliente FROM Clientes");
-            while (resultSet.next()){
-                idCA.getItems().addAll(resultSet.getString("IdCliente")+"- "+resultSet.getString("NomCliente"));
+        //Llenar datos de cada servicio en relacion a una venta Consulta Individual
+        idPC.setOnAction(event -> {
+            try(Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement()){
+                resultSet = statement.executeQuery("SELECT * FROM DetalleVentas WHERE IdVenta = "+getId(idVC.getValue())+" AND IdProducto = "+getId(idPC.getValue()));
+                while (resultSet.next()){
+                    cantPC.setText(resultSet.getString("Cantidad"));
+                    subtotalTA = resultSet.getDouble("Subtotal");
+                    subTC.setText(Double.toString(subtotalTA));
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
             }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        //CargarComboboxPA
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT IdProducto, NomProd, ValorVenta FROM Productos");
-            while (resultSet.next()){
-                idPA.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd")+" $"+resultSet.getString("ValorVenta"));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        //CargarCombobox id
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
-            resultSet = statement.executeQuery("SELECT IdVenta FROM Ventas");
-            while (resultSet.next()){
-                idVE.getItems().addAll(resultSet.getString("IdVenta"));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+        });
         //Comboboxdinamica eliminar
         idVE.setOnAction(event ->{
+            idPE.getItems().clear();
+            cantPE.setText(" ");
+            subTE.setText(" ");
+            totE.setText(" ");
             try(Connection connection = DriverManager.getConnection(connectionUrl);
                 Statement statement = connection.createStatement();){
                 resultSet = statement.executeQuery("SELECT * FROM  Ventas WHERE IdVenta = '"+idVE.getValue()+"'");
@@ -316,9 +304,52 @@ public class VentasController implements Initializable {
             }catch (SQLException e){
                 e.printStackTrace();
             }
+            try(Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement()){
+                //Llenar datos del mantenimiento
+                resultSet = statement.executeQuery("SELECT DetalleVentas.IdProducto, NomProd FROM  DetalleVentas, Productos  WHERE IdVenta = "+getId(idVE.getValue())+" AND DetalleVentas.IdProducto = Productos.IdProducto ORDER BY DetalleVentas.IdProducto ASC ");
+                while (resultSet.next()){
+                    idPE.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd"));
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
         });
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
+        //Llenar datos de cada servicio en relacion a una venta Consulta Individual
+        idPE.setOnAction(event -> {
+            try(Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement()){
+                resultSet = statement.executeQuery("SELECT * FROM DetalleVentas WHERE IdVenta = "+getId(idVE.getValue())+" AND IdProducto = "+getId(idPE.getValue()));
+                while (resultSet.next()){
+                    cantPE.setText(resultSet.getString("Cantidad"));
+                    subtotalTA = resultSet.getDouble("Subtotal");
+                    subTE.setText(Double.toString(subtotalTA));
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        });
+        //IdAgregar
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT TOP 1 IdVenta FROM Ventas ORDER BY IdVenta DESC");
+            if(resultSet.next()){
+                int id = resultSet.getInt("IdVenta")+1;
+                idVA.setText(Integer.toString(id));
+            }else idVA.setText("1");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        //CargarComboboxCA
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT IdCliente, NomCliente FROM Clientes");
+            while (resultSet.next()){
+                idCA.getItems().addAll(resultSet.getString("IdCliente")+"- "+resultSet.getString("NomCliente"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        //CargarComboboxPA
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT IdProducto, NomProd, ValorVenta FROM Productos");
             while (resultSet.next()){
                 idPA.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd")+" $"+resultSet.getString("ValorVenta"));
@@ -326,6 +357,24 @@ public class VentasController implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
+        //CargarCombobox id
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT IdVenta FROM Ventas");
+            while (resultSet.next()){
+                idVE.getItems().addAll(resultSet.getString("IdVenta"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
+            resultSet = statement.executeQuery("SELECT IdProducto, NomProd, ValorVenta FROM Productos");
+            while (resultSet.next()){
+                idPA.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd")+" $"+resultSet.getString("ValorVenta"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        //Actualización de subtotal dinamica
         cantA.textProperty().addListener(((observable, oldValue, newValue) -> {
             try(Connection connection = DriverManager.getConnection(connectionUrl);
                 Statement statement = connection.createStatement();){
@@ -342,11 +391,9 @@ public class VentasController implements Initializable {
                 e.printStackTrace();
             }
         }));
-
         //Consulta General
         ObservableList<Venta> datosTablaVen = FXCollections.observableArrayList();
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT * FROM Ventas");
             while (resultSet.next()){
                 datosTablaVen.add(new Venta(resultSet.getString("IdVenta"), resultSet.getString("IdCliente"), resultSet.getString("Total"), resultSet.getString("FechaVenta")));
@@ -359,11 +406,9 @@ public class VentasController implements Initializable {
         total.setCellValueFactory(new PropertyValueFactory<Venta, String>("tot"));
         fecha.setCellValueFactory(new PropertyValueFactory<Venta, String>("date"));
         ventasTable.setItems(datosTablaVen);
-
         //Consulta General2
         ObservableList<DetalleVenta> datosTablaDVen = FXCollections.observableArrayList();
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT * FROM DetalleVentas");
             while (resultSet.next()){
                 datosTablaDVen.add(new DetalleVenta(resultSet.getString("IdVenta"), resultSet.getString("IdProducto"), resultSet.getString("Cantidad"), resultSet.getString("Subtotal")));

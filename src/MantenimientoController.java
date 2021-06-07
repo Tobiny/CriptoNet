@@ -172,20 +172,20 @@ public class MantenimientoController implements Initializable {
         try(Connection connection = DriverManager.getConnection(connectionUrl);
             Statement statement = connection.createStatement()){
             String sql = "INSERT INTO Mantenimientos VALUES ('"+idMA.getText()+"', '"+getId(idCA.getValue())+"', '"+d+"', '"+idPA.getText()+"' , '"+totA.getText()+"')";
-            if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea agregar esta venta?", "Terminar Venta - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea agregar este Mantenimiento?", "Terminar Mantenimiento - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
                 if(c.ejecutarQuery(sql)){
                     for (int x = 0; x < servicios.toArray().length; x++){
                         c.ejecutarQuery(servicios.get(x));
                     }
                     totalTA = 0;
                     totA.setText("0");
-                    JOptionPane.showMessageDialog(null, "La venta ha sido agregada", "Venta exitosa", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido agregado", "Mantenimiento exitoso", JOptionPane.INFORMATION_MESSAGE);
                     updates();
                 }else{
-                    JOptionPane.showMessageDialog(null, "La venta no fue agregada", "Venta", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
                 }
                 servicios.clear();
-            }else JOptionPane.showMessageDialog(null, "La venta no fue agregada", "Venta", JOptionPane.INFORMATION_MESSAGE);
+            }else JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -222,39 +222,39 @@ public class MantenimientoController implements Initializable {
         String modSql = "UPDATE DetalleMantenimiento SET Cantidad = "+cantSerM.getText()+", Subtotal = "+subTM.getText()+" WHERE IdMant = "+getId(idMM.getValue())+" AND IdServicio = "+getId(idSerM.getValue())
                         +"UPDATE Mantenimientos SET Total = "+totalTA+" WHERE IdMant = "+getId(idMM.getValue());
         updates();
-        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este producto?", "Modificar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este Mantenimiento?", "Modificar Mantenimiento - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             if(c.ejecutarQuery(modSql)){
-                JOptionPane.showMessageDialog(null, "El producto ha sido modificado", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido modificado", "Modificar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Mantenimiento no sufrio modificaciones", "Modificar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El Mantenimiento no sufrio modificaciones", "Modificar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
     }
     public void modificarMantenimiento(){
         Date d = Date.valueOf(fechaM.getValue());
         String modSql = "UPDATE Mantenimientos SET IdCliente = "+getId(idCM.getValue())+", FechaMant = '"+d+"', Observaciones = '"+idPM.getText()+"' WHERE IdMant = "+getId(idMM.getValue());
         updates();
-        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este producto?", "Modificar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este Mantenimiento?", "Modificar Mantenimiento - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             if(c.ejecutarQuery(modSql)){
-                JOptionPane.showMessageDialog(null, "El producto ha sido modificado", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido modificado", "Modificar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Mantenimiento no sufrio modificaciones", "Modificar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El producto no sufrio modificaciones", "Modificar productos", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El Mantenimiento no sufrio modificaciones", "Modificar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
     }
     public void eliminarMantenimiento(){
         String delSql = "Delete Mantenimientos WHERE IdMant ="+idME.getValue()+";"+
                         "Delete DetalleMantenimiento Where DetalleMantenimiento.IdMant =  "+idME.getValue();
-        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea eliminar esta venta?", "Eliminar productos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea eliminar este mantenimiento?", "Eliminar mantenimientos - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             if(c.ejecutarQuery(delSql)){
-                JOptionPane.showMessageDialog(null, "la venta ha sido eliminada", "Eliminar Ventas", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El mantenimiento ha sido eliminado", "Eliminar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "La Venta no fue eliminada", "Eliminar Ventas", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El mantenimiento ha sido eliminado", "Eliminar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "La Venta no fue eliminada", "Eliminar Ventas", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El mantenimiento ha sido eliminado", "Eliminar Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
     }
     public void exit(MouseEvent actionEvent) throws IOException {
         System.exit(0);
@@ -482,8 +482,7 @@ public class MantenimientoController implements Initializable {
         }
         //Consulta General Mantenimientos
         ObservableList<Mantenimiento> datosTablaMant = FXCollections.observableArrayList();
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT * FROM Mantenimientos");
             while (resultSet.next()){
                 datosTablaMant.add(new Mantenimiento(resultSet.getString("IdMant"),resultSet.getString("IdCliente"), resultSet.getString("FechaMant"), resultSet.getString("Observaciones"), resultSet.getString("Total")));
@@ -497,11 +496,9 @@ public class MantenimientoController implements Initializable {
         obsev.setCellValueFactory(new PropertyValueFactory<Mantenimiento, String>("obsev"));
         total.setCellValueFactory(new PropertyValueFactory<Mantenimiento, String>("tot"));
         mantTable.setItems(datosTablaMant);
-
         //Consulta detalle Mantenimientos
         ObservableList<DetalleMantenimiento> detalleTablaMant = FXCollections.observableArrayList();
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement();){
+        try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT * FROM DetalleMantenimiento");
             while (resultSet.next()){
                 detalleTablaMant.add(new DetalleMantenimiento(resultSet.getString("IdMant"), resultSet.getString("IdServicio"), resultSet.getString("Cantidad"), resultSet.getString("Subtotal")));
