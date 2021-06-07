@@ -221,7 +221,7 @@ public class ProductosController implements Initializable {
                 resultSet = statement.executeQuery("SELECT * FROM  Productos WHERE IdProducto = '"+getId(nomProM.getValue())+"'");
                 while (resultSet.next()){
                     idProM.setText(resultSet.getString("NomProd"));
-                    preProM.setText("$"+resultSet.getString("ValorVenta"));
+                    preProM.setText(resultSet.getString("ValorVenta"));
                     cantProM.setText(resultSet.getString("Existencia"));
                 }
             }catch (SQLException e){

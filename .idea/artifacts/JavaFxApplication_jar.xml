@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact name="JavaFxApplication:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaFxApplication_jar</output-path>
+    <root id="root">
+      <element id="archive" name="JavaFxApplication.jar">
+        <element id="module-output" name="JavaFxApplication" />
+      </element>
+      <element id="library" level="project" name="mssql-jdbc-9.2.1.jre81" />
+    </root>
+  </artifact>
+</component>

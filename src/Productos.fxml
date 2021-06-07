@@ -194,9 +194,9 @@
                 <Label prefHeight="15.0" prefWidth="297.0" text="Nombre del Producto" GridPane.rowIndex="3" />
                 <TextField fx:id="idProE" editable="false" GridPane.rowIndex="4" />
                 <Label prefHeight="57.0" prefWidth="320.0" text="Precio del Producto" GridPane.rowIndex="5" />
-                <DecimalField fx:id="preProE" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="6" />
+                <DecimalField fx:id="preProE" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="6" editable="false"/>
                 <Label prefHeight="57.0" prefWidth="320.0" text="Cantidad de Productos" GridPane.rowIndex="7" />
-                <NumberTextField fx:id="cantProE" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="8" />
+                <NumberTextField fx:id="cantProE" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="8" editable="false"/>
                 <Label prefHeight="30.0" prefWidth="504.0" GridPane.rowIndex="9" />
                 <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="7" />
                 <Button fx:id="btnProE" mnemonicParsing="false" onMouseClicked="#eliminarProductos" prefHeight="30.0" prefWidth="506.0" text="Eliminar" GridPane.rowIndex="10" />
@@ -246,9 +246,9 @@
                 <Label prefHeight="15.0" prefWidth="297.0" text="Id del Producto" GridPane.rowIndex="3" />
                 <TextField fx:id="idProI" editable="false" GridPane.rowIndex="4" />
                 <Label prefHeight="57.0" prefWidth="320.0" text="Precio del Producto" GridPane.rowIndex="5" />
-                <DecimalField fx:id="preProI" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="6" />
+                <DecimalField fx:id="preProI" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="6" editable="false"/>
                 <Label prefHeight="57.0" prefWidth="320.0" text="Cantidad de Productos" GridPane.rowIndex="7" />
-                <NumberTextField fx:id="cantProI" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="8" />
+                <NumberTextField fx:id="cantProI" prefHeight="28.0" prefWidth="320.0" GridPane.rowIndex="8" editable="false"/>
                 <Label prefHeight="30.0" prefWidth="504.0" GridPane.rowIndex="9" />
                 <Label prefHeight="30.0" prefWidth="320.0" GridPane.rowIndex="7" />
             </GridPane>

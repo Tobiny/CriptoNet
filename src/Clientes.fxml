@@ -210,15 +210,15 @@
                 <Label prefHeight="35.0" prefWidth="320.0" text="Id del Cliente" GridPane.rowIndex="1" />
                 <ComboBox fx:id="idCE" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id" GridPane.rowIndex="2" />
                 <Label prefHeight="30.0" prefWidth="426.0" text="Id Empleado asignado (para mantenimentos)" GridPane.rowIndex="3" />
-                <ComboBox fx:id="idEE" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="4" />
+                <ComboBox fx:id="idEE" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="4" editable="false"/>
                 <Label prefHeight="35.0" prefWidth="320.0" text="Nombre del Cliente" GridPane.rowIndex="5" />
-                <TextField fx:id="nomE" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="6" />
+                <TextField fx:id="nomE" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="6" editable="false"/>
                 <Label prefHeight="35.0" prefWidth="320.0" text="Domicilio del Cliente" GridPane.rowIndex="7" />
-                <TextArea fx:id="domE" prefHeight="80.0" prefWidth="437.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="8" />
+                <TextArea fx:id="domE" prefHeight="80.0" prefWidth="437.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="8" editable="false" />
                 <Label prefHeight="57.0" prefWidth="320.0" text="RFC del Cliente" GridPane.rowIndex="9" />
-                <TextField fx:id="rfcE" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="10" />
+                <TextField fx:id="rfcE" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="10" editable="false"/>
                 <Label prefHeight="57.0" prefWidth="320.0" text="Tipo de minero" GridPane.rowIndex="11" />
-                <ComboBox fx:id="tmE" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="12" />
+                <ComboBox fx:id="tmE" prefHeight="28.0" prefWidth="435.0" GridPane.rowIndex="12" editable="false"/>
                 <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
                 <Button fx:id="btnE" mnemonicParsing="false" onMouseClicked="#eliminarCliente" prefHeight="32.0" prefWidth="437.0" text="Eliminar" GridPane.rowIndex="14" />
             </GridPane>
@@ -275,15 +275,15 @@
                 <Label prefHeight="35.0" prefWidth="320.0" text="Id del Cliente" GridPane.rowIndex="1" />
                 <ComboBox fx:id="idCC" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id" GridPane.rowIndex="2" />
                 <Label prefHeight="30.0" prefWidth="426.0" text="Id Empleado asignado (para mantenimentos)" GridPane.rowIndex="3" />
-                <ComboBox fx:id="idEC" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="4" />
+                <ComboBox fx:id="idEC" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="4" editable="false"/>
                 <Label prefHeight="35.0" prefWidth="320.0" text="Nombre del Cliente" GridPane.rowIndex="5" />
-                <TextField fx:id="nomC" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="6" />
+                <TextField fx:id="nomC" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="6" editable="false"/>
                 <Label prefHeight="35.0" prefWidth="320.0" text="Domicilio del Cliente" GridPane.rowIndex="7" />
-                <TextArea fx:id="domC" prefHeight="80.0" prefWidth="437.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="8" />
+                <TextArea fx:id="domC" prefHeight="80.0" prefWidth="437.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="8" editable="false"/>
                 <Label prefHeight="57.0" prefWidth="320.0" text="RFC del Cliente" GridPane.rowIndex="9" />
-                <TextField fx:id="rfcC" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="10" />
+                <TextField fx:id="rfcC" prefHeight="28.0" prefWidth="320.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="10" editable="false"/>
                 <Label prefHeight="57.0" prefWidth="320.0" text="Tipo de minero" GridPane.rowIndex="11" />
-                <ComboBox fx:id="tmC" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="12" />
+                <ComboBox fx:id="tmC" prefHeight="28.0" prefWidth="435.0" promptText="Seleccione un id de cliente primero" GridPane.rowIndex="12" editable="false"/>
                 <Label prefHeight="30.0" prefWidth="435.0" GridPane.rowIndex="13" />
             </GridPane>
         </Tab>

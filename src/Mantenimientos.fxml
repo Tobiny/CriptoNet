@@ -221,16 +221,16 @@
                 <Label prefHeight="33.0" prefWidth="660.0" text="Id de el Mantenimiento" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <ComboBox fx:id="idMM"  maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <ComboBox fx:id="idCM" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <ComboBox fx:id="idCM" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="3" editable="false"/>
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <DatePicker fx:id="fechaM" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <DatePicker fx:id="fechaM" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="5" editable="false"/>
                 <Label prefHeight="35.0" prefWidth="660.0" text="Observaciones" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                <TextArea fx:id="idPM" prefHeight="80.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <TextArea fx:id="idPM" prefHeight="80.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="7" editable="false"/>
                 <Separator style="-fx-border-color: gray" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                 <Label prefHeight="57.0" prefWidth="660.0" text="Id de el Servicio" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                <ComboBox fx:id="idSerM" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                <ComboBox fx:id="idSerM" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="10" editable="false"/>
                 <Label prefHeight="57.0" prefWidth="660.0" text="Cantidad" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                <NumberTextField fx:id="cantSerM" prefHeight="28.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                <NumberTextField fx:id="cantSerM" prefHeight="28.0" GridPane.columnIndex="1" GridPane.rowIndex="12" editable="false"/>
                 <Label prefHeight="57.0" prefWidth="660.0" text="Subtotal" GridPane.columnIndex="1" GridPane.rowIndex="13" />
                 <TextField fx:id="subTM" editable="false" prefHeight="28.0" promptText="Calculado" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                 <Label prefHeight="57.0" prefWidth="660.0" text="Total" GridPane.columnIndex="1" GridPane.rowIndex="15" />
@@ -413,7 +413,7 @@
                 <Label prefHeight="33.0" prefWidth="660.0" text="Id de el Mantenimiento" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                 <ComboBox fx:id="idMI" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField fx:id="idCI" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="idCI" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" editable="false"/>
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <DatePicker fx:id="fechaI" editable="false" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Observaciones" GridPane.columnIndex="1" GridPane.rowIndex="6" />

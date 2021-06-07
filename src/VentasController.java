@@ -351,6 +351,7 @@ public class VentasController implements Initializable {
         //CargarComboboxPA
         try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT IdProducto, NomProd, ValorVenta FROM Productos");
+            idPA.getItems().clear();
             while (resultSet.next()){
                 idPA.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd")+" $"+resultSet.getString("ValorVenta"));
             }
@@ -368,6 +369,7 @@ public class VentasController implements Initializable {
         }
         try(Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();){
             resultSet = statement.executeQuery("SELECT IdProducto, NomProd, ValorVenta FROM Productos");
+            idPA.getItems().clear();
             while (resultSet.next()){
                 idPA.getItems().addAll(resultSet.getString("IdProducto")+"- "+resultSet.getString("NomProd")+" $"+resultSet.getString("ValorVenta"));
             }

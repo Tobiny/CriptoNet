@@ -209,7 +209,7 @@
                 <Label prefHeight="30.0" prefWidth="660.0" text="Id de el Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <TextField fx:id="idEC" editable="false" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <DatePicker fx:id="fechaE" editable="false" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <DatePicker fx:id="fechaE" editable="false" prefHeight="28.0" prefWidth="660.0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
                 <Separator style="-fx-border-color: gray" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <Label prefHeight="35.0" prefWidth="660.0" text="Id de el Producto" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                 <ComboBox fx:id="idPE" prefHeight="28.0" prefWidth="660.0" promptText="Seleccione un producto" GridPane.columnIndex="1" GridPane.rowIndex="8" />
