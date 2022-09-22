@@ -168,27 +168,30 @@ public class MantenimientoController implements Initializable {
     }
 
     public void agregarMantenimiento(){
-        Date d = Date.valueOf(fechaAM.getValue());
-        try(Connection connection = DriverManager.getConnection(connectionUrl);
-            Statement statement = connection.createStatement()){
-            String sql = "INSERT INTO Mantenimientos VALUES ('"+idMA.getText()+"', '"+getId(idCA.getValue())+"', '"+d+"', '"+idPA.getText()+"' , '"+totA.getText()+"')";
-            if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea agregar este Mantenimiento?", "Terminar Mantenimiento - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-                if(c.ejecutarQuery(sql)){
-                    for (int x = 0; x < servicios.toArray().length; x++){
-                        c.ejecutarQuery(servicios.get(x));
+        if(c.tfieldNotNull(idMA) && c.tareaNotNull(idPA) && c.tfieldNotNull(totA)){
+            Date d = Date.valueOf(fechaAM.getValue());
+            try(Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement()){
+                String sql = "INSERT INTO Mantenimientos VALUES ('"+idMA.getText()+"', '"+getId(idCA.getValue())+"', '"+d+"', '"+idPA.getText()+"' , '"+totA.getText()+"')";
+                if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea agregar este Mantenimiento?", "Terminar Mantenimiento - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                    if(c.ejecutarQuery(sql)){
+                        for (int x = 0; x < servicios.toArray().length; x++){
+                            c.ejecutarQuery(servicios.get(x));
+                        }
+                        totalTA = 0;
+                        totA.setText("0");
+                        JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido agregado", "Mantenimiento exitoso", JOptionPane.INFORMATION_MESSAGE);
+                        updates();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El Mantenimiento no ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
                     }
-                    totalTA = 0;
-                    totA.setText("0");
-                    JOptionPane.showMessageDialog(null, "El Mantenimiento ha sido agregado", "Mantenimiento exitoso", JOptionPane.INFORMATION_MESSAGE);
-                    updates();
-                }else{
-                    JOptionPane.showMessageDialog(null, "El Mantenimiento no ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
-                }
-                servicios.clear();
-            }else JOptionPane.showMessageDialog(null, "El Mantenimiento no ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
-        }catch (SQLException e){
-            e.printStackTrace();
+                    servicios.clear();
+                }else JOptionPane.showMessageDialog(null, "El Mantenimiento no ha sido agregado", "Mantenimiento", JOptionPane.INFORMATION_MESSAGE);
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
         }
+
     }
     public void agregarServicio(){
         //Creo las strings de sentencia

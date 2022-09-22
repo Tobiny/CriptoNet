@@ -1,4 +1,7 @@
 package src;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
 import java.awt.*;
 import java.sql.*;
 
@@ -37,16 +40,20 @@ public class Conexion {
             return false;
         }
     }
-    public boolean fieldNotNull(TextField f){
-        if(f.getText().trim().isEmpty() || f.getText()==null) return false;
+    public boolean tfieldNotNull(TextField f){
+        if(f.getText().trim().isEmpty() || f.getText()==null || f.getText() == "" || f.getText() == " ") return false;
         else return true;
     }
-    public boolean fieldNotNull(DecimalField f){
-        if(f.getText().trim().isEmpty() || f.getText()==null) return false;
+    public boolean dfieldNotNull(DecimalField f){
+        if(f.getText().trim().isEmpty() || f.getText()==null || f.getText() == "" || f.getText() == " ") return false;
         else return true;
     }
-    public boolean fieldNotNull(NumberTextField f){
-        if(f.getText().trim().isEmpty() || f.getText()==null) return false;
+    public boolean nfieldNotNull(NumberTextField f){
+        if(f.getText().trim().isEmpty() || f.getText()==null || f.getText() == "" || f.getText() == " ") return false;
+        else return true;
+    }
+    public boolean tareaNotNull(TextArea f){
+        if(f.getText().trim().isEmpty() || f.getText()==null || f.getText() == "" || f.getText() == " ") return false;
         else return true;
     }
 }

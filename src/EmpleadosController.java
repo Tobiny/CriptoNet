@@ -124,24 +124,32 @@ public class EmpleadosController implements Initializable {
         app_stage.show();
     }
     public void agregarEmpleado(MouseEvent actionEvent) throws IOException {
-        String sql = "INSERT INTO Empleados VALUES ('"+nomEmpA.getText()+"');";
-        if (c.ejecutarQuery(sql)){
-            JOptionPane.showMessageDialog(null, "El Empleado ha sido agregado", "Agregar Empleados", JOptionPane.INFORMATION_MESSAGE);
-            updates();
-        }else{
-            JOptionPane.showMessageDialog(null, "El Empleado no se agregó", "Agregar Empleados", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-    public void modificarEmpleado(MouseEvent actionEvent) throws IOException {
-        String agregarSql = "UPDATE Empleados SET NomEmpleado = '"+nomEmpM.getText()+"' WHERE IdEmpleado = "+getId(idEmpM.getValue());
-        if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este empleado?", "Modificar empleados - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-            if(c.ejecutarQuery(agregarSql)){
-                JOptionPane.showMessageDialog(null, "El empleado ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
+        if(c.tfieldNotNull(nomEmpA)){
+            String sql = "INSERT INTO Empleados VALUES ('"+nomEmpA.getText()+"');";
+            if (c.ejecutarQuery(sql)){
+                JOptionPane.showMessageDialog(null, "El Empleado ha sido agregado", "Agregar Empleados", JOptionPane.INFORMATION_MESSAGE);
                 updates();
             }else{
-                JOptionPane.showMessageDialog(null, "El empleado no ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Empleado no se agregó", "Agregar Empleados", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else JOptionPane.showMessageDialog(null, "El empleado no ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "El formulario no puede contener campos en blanco", "Agregar Empleados", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }
+    public void modificarEmpleado(MouseEvent actionEvent) throws IOException {
+        if(c.tfieldNotNull(nomEmpA)){
+            String agregarSql = "UPDATE Empleados SET NomEmpleado = '"+nomEmpM.getText()+"' WHERE IdEmpleado = "+getId(idEmpM.getValue());
+            if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea modificar este empleado?", "Modificar empleados - Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                if(c.ejecutarQuery(agregarSql)){
+                    JOptionPane.showMessageDialog(null, "El empleado ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
+                    updates();
+                }else{
+                    JOptionPane.showMessageDialog(null, "El empleado no ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }else JOptionPane.showMessageDialog(null, "El empleado no ha sido modificado", "Modificar empleados", JOptionPane.INFORMATION_MESSAGE);
+        }else JOptionPane.showMessageDialog(null, "El formulario no puede contener campos en blanco", "Agregar Empleados", JOptionPane.INFORMATION_MESSAGE);
+
     }
     public void eliminarEmpleado(MouseEvent actionEvent) throws IOException {
         String agregarSql = "DELETE FROM Empleados WHERE IdEmpleado = "+getId(idEmpE.getValue());
